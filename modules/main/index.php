@@ -1,6 +1,9 @@
 <?php
 
-//$content = "Main page";
+$details = R::find('about', 1);
+
+$aboutName = $details[1]['name'];
+$aboutDesc = $details[1]['description'];
 
 $page_name = "Главная страница";
 $page_text = "Текст главной страницы. Lorem ipsum.........";
