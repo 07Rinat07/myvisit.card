@@ -2,28 +2,31 @@
 require_once "config.php";
 
 // ROUTE
+
+//Обработка запроса
 $uri = $_SERVER["REQUEST_URI"];
 $uri = rtrim($uri, "/");
 $uri = filter_var($uri, FILTER_SANITIZE_URL);
 $uri = substr($uri, 1);
 $uri = explode('?', $uri);
 
-print_r($uri);
+//print_r($uri);
 
+//Роутер
 switch ($uri[0]){
     case '':
-        echo "Main page";
+        require ROOT . "modules/main/index.php";
         break;
     case 'about':
-        echo "About me";
+        require ROOT . "modules/about/index.php";
         break;
     case 'blog':
-        echo "Blog";
+        require ROOT . "modules/blog/index.php";
         break;
     case 'contacts':
-        echo "Contact page";
+        require ROOT . "modules/contacts/index.php";
         break;
     default:
-        echo "Main or 404";
+        require ROOT . "modules/main/index.php";
         break;
 }
