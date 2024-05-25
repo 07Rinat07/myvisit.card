@@ -1,14 +1,8 @@
 <?php
 
-
-
-echo "<pre>";
-print_r($_SERVER);
-echo "</pre>";
-
-
-
-//host site
+//host site для ссылок в браузере
 define('HOST', '//' . $_SERVER['HTTP_HOST'] .'/');
 
-echo HOST;
+// физич путь к корневой директории скрипта
+define('ROOT', dirname(__FILE__). '/');
+
