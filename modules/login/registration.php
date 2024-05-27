@@ -12,11 +12,26 @@ if ( isset($_POST['register'])) {
     // Проверка на зполненность
     if ( trim($_POST['email']) == '' ) {
         $errors[] = ['title' => 'Введите Email', 'desc' => '<p>Email обязателен для регистрации на сайте</p>'];
+    } else if ( !filter_var($_POST['email'], FILTER_VALIDATE_EMAIL) ){
+        $errors[] = ['title' => 'Введите корректный Email'];
     }
 
     if ( trim($_POST['password']) == '' ) {
         $errors[] = ['title' => 'Введите пароль'];
     }
+
+    //TODO: Сделать проверку на корректность Email адреса filtervar
+
+    // Если нет ошибок - Регистрируем пользователя
+    if ( empty($errors)) {
+        $user = R::dispense('users');
+        $user->email = $_POST['email'];
+        $user->role = 'user';
+        $user->password = password_hash($_POST['password'], PASSWORD_DEFAULT);
+        R::store($user);
+    }
+
+
 
 }
 
