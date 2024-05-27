@@ -2,6 +2,21 @@
 
 $pageTitle = "Регистрация";
 
+
+
+echo "<pre>";
+print_r($_POST);
+echo "</pre>";
+
+
+// Если форма отправлена то регистрирую
+if (trim($_POST['email']) == '') {
+    $errors[] = ['title' => 'Введите email', 'desc' => '<p>Email обязателен для регистрации на сайте </p>'];
+}
+if (trim($_POST['password']) == '') {
+    $errors[] = ['title' => 'Введите пароль'];
+}
+
 ob_start();
 include ROOT . 'templates/login/form-registration.tpl';
 $content = ob_get_contents();

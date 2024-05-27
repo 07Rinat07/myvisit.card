@@ -2,7 +2,14 @@
 require_once "config.php";
 require_once "db.php";
 
-// ROUTE
+
+$errors = array();
+$success = array();
+
+
+/* ...............................................
+//Роутер // Route - Маршрут
+.................................................. */
 
 //Обработка запроса
 $uri = $_SERVER["REQUEST_URI"];
@@ -11,9 +18,7 @@ $uri = filter_var($uri, FILTER_SANITIZE_URL);
 $uri = substr($uri, 1);
 $uri = explode('?', $uri);
 
-//print_r($uri);
 
-//Роутер
 switch ($uri[0]) {
     case '':
         require ROOT . "modules/main/index.php";
