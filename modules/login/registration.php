@@ -2,19 +2,22 @@
 
 $pageTitle = "Регистрация";
 
-
-
 echo "<pre>";
 print_r($_POST);
 echo "</pre>";
 
+// Если форма отправлена - то делаем регистрацию
+if ( isset($_POST['register'])) {
 
-// Если форма отправлена то регистрирую
-if (trim($_POST['email']) == '') {
-    $errors[] = ['title' => 'Введите email', 'desc' => '<p>Email обязателен для регистрации на сайте </p>'];
-}
-if (trim($_POST['password']) == '') {
-    $errors[] = ['title' => 'Введите пароль'];
+    // Проверка на зполненность
+    if ( trim($_POST['email']) == '' ) {
+        $errors[] = ['title' => 'Введите Email', 'desc' => '<p>Email обязателен для регистрации на сайте</p>'];
+    }
+
+    if ( trim($_POST['password']) == '' ) {
+        $errors[] = ['title' => 'Введите пароль'];
+    }
+
 }
 
 ob_start();
@@ -25,6 +28,3 @@ ob_end_clean();
 include ROOT . 'templates/_page-parts/_head.tpl';
 include ROOT . 'templates/login/login-page.tpl';
 include ROOT . 'templates/_page-parts/_foot.tpl';
-
-
-
