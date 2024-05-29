@@ -1,10 +1,6 @@
 <?php
 
 $pageTitle = "Регистрация";
-//
-//echo "<pre>";
-//print_r($_POST);
-//echo "</pre>";
 
 // Если форма отправлена - то делаем регистрацию
 if (isset($_POST['register'])) {
