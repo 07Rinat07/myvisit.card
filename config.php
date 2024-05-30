@@ -20,3 +20,7 @@ define('HOST', $protocol . $_SERVER['HTTP_HOST'] .'/');
 // физич путь к корневой директории скрипта
 define('ROOT', dirname(__FILE__) . '/');
 
+//Дополнительная настройка-на хостинге незабудь в адрес внести свой домен
+define('SITE_NAME', 'Сайт Digital Nomad');
+define('SITE_EMAIL', 'info@myvisit.card');
+
