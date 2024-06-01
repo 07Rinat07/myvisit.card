@@ -3,6 +3,9 @@
 $pageTitle = "Установить новый пароль";
 
 
+
+
+
 ob_start();
 include ROOT . 'templates/login/set-new-password.tpl';
 $content = ob_get_contents();
