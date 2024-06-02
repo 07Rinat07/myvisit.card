@@ -12,27 +12,35 @@ if (!empty($_GET['email']) && !empty($_GET['code'])) {
         header("Location: " . HOST . "lost-password");
     }
 }
-
-
-
-// Проверить Секретный код на верность
-
-// Показать ошибку  email или код неверен
-
 // 2) Если отправлена форма с новым паролем
+else if (!empty($_POST['set-new-password'])) {
 
-// Найти по email в БД
+    // Найти юзера по email в БД
+    $user = R::findOne('users', 'email = ?', array($_POST['email']));
 
-// Проверить Секретный код на верность
+    // Если пользователь был найден
+    if ($user) {
+        // Проверить Секретный код на верность
+        if ($user->recovery_code === $_POST['resetCode'] && $user->recovery_code != '' && $user->recovery_code != NULL ) {
+            // Смена пароля
+            $user->password = password_hash($_POST['password'], PASSWORD_DEFAULT);
+            $user->recovery_code = '';
+            R::store($user);
 
-// Смена пароля
+            // Сообщение об успехе и вход на сайт
+            $success[] = ['title' => 'Пароль успешно обновлен!'];
 
-// Сообщение об успехе и вход на сайт
-
+            $newPasswordReady = true;
+        } else {
+            $errors[] = ['title' => 'Неверный код'];
+        }
+    }
+}
 // 3) Перенаправляем на loat-password
-
-
-
+else {
+    header("Location: " . HOST . "lost-password");
+    die();
+}
 
 ob_start();
 include ROOT . 'templates/login/set-new-password.tpl';
