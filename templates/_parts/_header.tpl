@@ -1,5 +1,5 @@
 
-
+<?php include ROOT . "templates/_parts/_admin-panel.tpl"; ?>
 
 <header class="section-header section-header--inner">
     <div class="section-header__content">
