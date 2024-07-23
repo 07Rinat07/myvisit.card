@@ -7,7 +7,7 @@
 
 <footer class="authorization-page__footer">
     <div class="authorization-page__footer__copyright">
-        <p>© URALSK DEVELOPER SRR</p>
+        <p>© Rinat developer</p>
         <p>Создано в 2024 году.</p>
     </div>
 </footer><!-- build:js1 js/jquery.js -->

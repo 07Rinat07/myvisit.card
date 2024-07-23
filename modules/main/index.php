@@ -1,4 +1,5 @@
 <?php
+
 $details = R::find('about', 1);
 
 // echo "<pre>";

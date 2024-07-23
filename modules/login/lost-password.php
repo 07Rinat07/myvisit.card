@@ -1,6 +1,7 @@
 <?php
 
 $pageTitle = "Восстановить пароль";
+$pageClass = "authorization-page";
 
 echo "<pre>";
 print_r($_POST);
@@ -61,6 +62,12 @@ if (isset($_POST['lost-password'])) {
         }
     }
 }
+
+
+
+
+
+
 
 
 ob_start();

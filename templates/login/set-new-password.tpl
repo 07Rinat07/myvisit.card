@@ -7,17 +7,17 @@
     <?php include ROOT . "templates/components/success.tpl"; ?>
 
     <?php if ( !isset($newPasswordReady) ): ?>
-    <div class="authorization-form__input">
-        <input name="password" class="input" type="password" placeholder="Новый пароль" />
-    </div>
-    <input type="hidden" name="email" value="<?= $_GET['email'] ?>">
-    <input type="hidden" name="resetCode" value="<?= $_GET['code'] ?>">
+        <div class="authorization-form__input">
+            <input name="password" class="input" type="password" placeholder="Новый пароль" />
+        </div>
+        <input type="hidden" name="email" value="<?= $_GET['email'] ?>">
+        <input type="hidden" name="resetCode" value="<?= $_GET['code'] ?>">
 
-    <div class="authorization-form__button">
-        <button name="set-new-password" value="set-new-password" class="primary-button" type="submit">
-            Установить пароль
-        </button>
-    </div>
+        <div class="authorization-form__button">
+            <button name="set-new-password" value="set-new-password" class="primary-button" type="submit">
+                Установить пароль
+            </button>
+        </div>
     <?php endif; ?>
 
     <div class="authorization-form__links">

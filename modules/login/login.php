@@ -1,6 +1,7 @@
 <?php
 
 $pageTitle = "Вход на сайт";
+$pageClass = "authorization-page";
 
 // echo "<pre>";
 // print_r($_POST);
@@ -39,6 +40,7 @@ if (isset($_POST['login'])) {
         } else {
             // Email не найден
             $errors[] = ['title' => 'Неверный email'];
+
         }
 
     }

@@ -1,6 +1,3 @@
 <?php
 
-echo "<h1>Logout.php</h1>";
-
-
-
+echo "<h1>logout.php</h1>";

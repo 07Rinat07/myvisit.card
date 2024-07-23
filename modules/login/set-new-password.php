@@ -1,6 +1,7 @@
 <?php
 
 $pageTitle = "Установить новый пароль";
+$pageClass = "authorization-page";
 
 // 1) Пришли по секретной ссылке с EMAIl
 if (!empty($_GET['email']) && !empty($_GET['code'])) {

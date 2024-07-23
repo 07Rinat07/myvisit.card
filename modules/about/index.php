@@ -1,6 +1,9 @@
 <?php
+
+// $content = "Main page";
+
 $page_name = "О сайте";
-$page_text = "Текст страницы о сайте.";
+$page_text = "Текст страницы О сайте";
 
 ob_start();
 include ROOT . 'templates/about/about.tpl';

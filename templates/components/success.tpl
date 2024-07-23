@@ -1,17 +1,18 @@
 <?php
-    // Проверка что массив $success НЕ пуст, значит есть ошибки на вывод
+    // Проверка что массив $errors НЕ пуст, значит есть ошиьки на вывод
     if ( !empty($success)):
 
-        // Обходим массив
+        // Обходим массив, выводя каждую ошибку
         foreach ($success as $item ):
 
+            // Если в ошибке только заголовок
             if ( count($item) == 1):
             ?>
                 <div class="notifications mb-20">
                     <div class="notifications__title notifications__title--success"><?php echo $item['title'];?></div>
                 </div>
             <?php
-
+            // Если в ошибке заголовок с описанием
             elseif ( count($item) == 2):
             ?>
                 <div class="notifications mb-20 notifications__title--with-message">
