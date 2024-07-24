@@ -6,6 +6,8 @@ require_once "db.php";
 $errors = array();
 $success = array();
 
+session_start();
+
 /* ..........................................
 
 РОУТЕР // ROUTE - МАРШРУТ
