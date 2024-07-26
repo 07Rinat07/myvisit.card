@@ -47,7 +47,22 @@
                                     <dt class="definition__term">Страна, город</dt>
                                     <dd class="definition__description"> <?= $user->country ?>, <?= $user->city ?></dd>
                                 </dl>
-                            </div><a class="secondary-button" href="#">Редактировать</a>
+                            </div>
+
+                            <!-- Показываем кнопку Редактировать только залогиненому пользователю -->
+                            <!-- Только владельцу профиля или админу -->
+                            <?php
+                            if (
+                                isset($_SESSION['login']) && $_SESSION['login'] === 1
+                                && (
+                                    $_SESSION['logged_user']['id'] == $user->id
+                                    || $_SESSION['logged_user']['role'] === 'admin'
+                                    )
+                                ) :
+                            ?>
+                                <a class="secondary-button" href="#">Редактировать</a>
+                            <?php endif; ?>
+
                         </div>
                     </div>
                 </div>
