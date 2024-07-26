@@ -26,12 +26,12 @@ $uriArray = explode('/', $uri[0]);
 $uriModule = $uriArray[0];
 
 // Роутер
-switch ($uriModule){
+switch ($uriModule) {
     case '':
-        require (ROOT . "modules/main/index.php");
+        require(ROOT . "modules/main/index.php");
         break;
 
-    // ::::::::::::::::::: USERS :::::::::::::::::::
+        // ::::::::::::::::::: USERS :::::::::::::::::::
 
     case 'login':
         require ROOT . "modules/login/login.php";
@@ -54,7 +54,7 @@ switch ($uriModule){
         break;
 
     case 'profile':
-        require ROOT . "modules/profile/index.php";
+        require ROOT . "modules/profile/profile.php";
         break;
 
     case 'profile-edit':
@@ -62,7 +62,7 @@ switch ($uriModule){
         break;
 
 
-    // ::::::::::::::::::: OTHERS :::::::::::::::::::
+        // ::::::::::::::::::: OTHERS :::::::::::::::::::
 
     case 'about':
         require ROOT . "modules/about/index.php";

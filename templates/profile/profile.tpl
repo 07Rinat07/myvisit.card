@@ -1,12 +1,29 @@
 <main class="page-profile">
-    <?php if ($user['id'] === 0) : ?>
+
+    <!-- Если пользователь открывает profile и не залогинился -->
+    <?php if (isset($userNotLoggedIn)) : ?>
         <div class="section">
             <div class="container">
                 <div class="section__title">
-                    <h2 class="heading">Такого пользователя не существует</h2>
+                    <h2 class="heading mb-25">Профиль пользователя</h2>
+                    <p>Чтобы посмотреть свой профиль
+                        <a href="<?= HOST ?>login">войдите</a>
+                        либо
+                        <a href="<?= HOST ?>registration">зарегистрируйтесь</a>.</p>
                 </div>
             </div>
         </div>
+        <!-- Если пользователь с таким ID не существует -->
+    <?php elseif ($user['id'] === 0) : ?>
+        <div class="section">
+            <div class="container">
+                <div class="section__title">
+                    <h2 class="heading mb-25">Такого пользователя не существует</h2>
+                    <p><a href="<?= HOST ?>">Вернуться на главную</a>.</p>
+                </div>
+            </div>
+        </div>
+        <!-- Если пользователь НАЙДЕН -->
     <?php else : ?>
         <div class="section">
             <div class="container">

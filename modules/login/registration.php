@@ -37,7 +37,7 @@ if ( isset($_POST['register'])) {
         $result = R::store($user);
 
         if ( is_int($result)) {
-            $success[] = ['title' => 'Вы успешно зарегистрированы!'];
+            // $success[] = ['title' => 'Вы успешно зарегистрированы!'];
 
             // Автологин пользователя после регистрации
             $_SESSION['logged_user'] = $user;
