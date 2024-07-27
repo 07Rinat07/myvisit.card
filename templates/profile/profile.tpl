@@ -49,19 +49,24 @@
                                 </dl>
                             </div>
 
-                            <!-- Показываем кнопку Редактировать только залогиненому пользователю -->
-                            <!-- Только владельцу профиля или админу -->
-                            <?php
-                            if (
-                                isset($_SESSION['login']) && $_SESSION['login'] === 1
-                                && (
-                                    $_SESSION['logged_user']['id'] == $user->id
-                                    || $_SESSION['logged_user']['role'] === 'admin'
-                                    )
-                                ) :
-                            ?>
-                                <a class="secondary-button" href="#">Редактировать</a>
-                            <?php endif; ?>
+
+<!-- Проверяем что пользователь Залогинен. Юзер либо Админ -->
+<?php if (isset($_SESSION['login']) && $_SESSION['login'] === 1) :
+        // Прооверка на юзера или админа
+        $btnLink = $_SESSION['logged_user']['role'] === 'admin' ? '/' . $user->id : '';
+?>
+
+    <a class="secondary-button" href="<?= HOST . 'profile-edit' . $btnLink?>">Редактировать</a>
+
+<?php endif; ?>
+
+
+
+
+
+
+
+
 
                         </div>
                     </div>
