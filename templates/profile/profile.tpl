@@ -49,24 +49,13 @@
                                 </dl>
                             </div>
 
-
-<!-- Проверяем что пользователь Залогинен. Юзер либо Админ -->
-<?php if (isset($_SESSION['login']) && $_SESSION['login'] === 1) :
-        // Прооверка на юзера или админа
-        $btnLink = $_SESSION['logged_user']['role'] === 'admin' ? '/' . $user->id : '';
-?>
-
-    <a class="secondary-button" href="<?= HOST . 'profile-edit' . $btnLink?>">Редактировать</a>
-
-<?php endif; ?>
-
-
-
-
-
-
-
-
+                            <!-- Проверяем что пользователь Залогинен. Юзер либо Админ -->
+                            <?php if (isset($_SESSION['login']) && $_SESSION['login'] === 1) :
+                                    // Прооверка на юзера или админа
+                                    $btnLink = $_SESSION['logged_user']['role'] === 'admin' ? '/' . $user->id : '';
+                            ?>
+                                <a class="secondary-button" href="<?= HOST . 'profile-edit' . $btnLink?>">Редактировать</a>
+                            <?php endif; ?>
 
                         </div>
                     </div>

@@ -5,7 +5,7 @@
     <div class="container">
         <div class="row">
             <div class="col section-footer__copyright">
-                <p>© Rinat developer</p>
+                <p>© Rinat Developer</p>
                 <p>Создано в 2024 году.</p>
             </div>
             <div class="col section-social-icons">

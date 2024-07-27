@@ -25,6 +25,9 @@ $uriGet = isset($uri[1]) ? $uri[1] : null;
 $uriArray = explode('/', $uri[0]);
 $uriModule = $uriArray[0];
 
+// print_r($uriArray);
+// die();
+
 // Роутер
 switch ($uriModule) {
     case '':
