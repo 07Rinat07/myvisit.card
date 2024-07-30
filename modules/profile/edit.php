@@ -81,19 +81,26 @@ function updateUserandGoToProfile($user){
                         file_exists( $pictureUrl48) ? unlink($pictureUrl48) : '';
                     }
 
-                    $db_file_name =
-                    rand(100000000000,999999999999) . "." . $fileExt;
-                    $uploadfile = $avatarFolderLocation . $db_file_name;
-                    $moveResult = move_uploaded_file($fileTmpLoc, $uploadfile);
 
-                    if ($moveResult != true) {
-                        $_SESSION['errors'][] = ['title' => 'Ошибка сохранения файла'];
-                        return false;
-                    }
+
+
+
+                    $db_file_name =
+                    rand(100000000000, 999999999999) . "." . $fileExt;
+                    $uploadfile160 = $avatarFolderLocation . $db_file_name;
+                    $uploadfile48 = $avatarFolderLocation . '48-' . $db_file_name;
 
                     // Обработать фотографию
                     // 1. Обрезать до 160х160
+                    $result160 = resize_and_crop($fileTmpLoc, $uploadfile160, 160, 160);
                     // 2. Обрезать до 48х48
+                    $result48 = resize_and_crop($fileTmpLoc, $uploadfile48, 48, 48);
+
+
+                    if ($result160 != true || $result48 != true ) {
+                        $_SESSION['errors'][] = ['title' => 'Ошибка сохранения файла'];
+                        return false;
+                    }
 
                     // Сохраняем имя файла в БД
                     $user->avatar = $db_file_name;
