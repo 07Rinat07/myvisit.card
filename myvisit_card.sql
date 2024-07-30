@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: localhost
--- Время создания: Июл 27 2024 г., 14:11
+-- Время создания: Июл 30 2024 г., 18:37
 -- Версия сервера: 8.0.37-0ubuntu0.22.04.3
 -- Версия PHP: 7.4.33
 
@@ -56,16 +56,18 @@ CREATE TABLE `users` (
   `name` varchar(191) COLLATE utf8mb4_unicode_520_ci DEFAULT NULL,
   `surname` varchar(191) COLLATE utf8mb4_unicode_520_ci DEFAULT NULL,
   `city` varchar(191) COLLATE utf8mb4_unicode_520_ci DEFAULT NULL,
-  `country` varchar(191) COLLATE utf8mb4_unicode_520_ci DEFAULT NULL
+  `country` varchar(191) COLLATE utf8mb4_unicode_520_ci DEFAULT NULL,
+  `avatar` varchar(191) COLLATE utf8mb4_unicode_520_ci DEFAULT NULL,
+  `avatar_small` varchar(191) COLLATE utf8mb4_unicode_520_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
 
 --
 -- Дамп данных таблицы `users`
 --
 
-INSERT INTO `users` (`id`, `email`, `role`, `password`, `recovery_code`, `name`, `surname`, `city`, `country`) VALUES
-(4, 'mytest3004@mail.com', 'user', '$2y$10$bYcaKTa1wriOIc6/xd2cVeeCG98qZ7DvCthDSQoDvVn/.Pcw5/WOG', NULL, 'Bob', 'Pakerson', 'Texas', 'USA'),
-(5, 'user1@mail.ru', 'admin', '$2y$10$BJbubhX2SE4SjGL86qaIeObzZsacGW.dRM9oyB56zUmE2kgVn3Ppu', NULL, 'Михаил ', 'Тарасов admin', 'Рязань', 'Россия');
+INSERT INTO `users` (`id`, `email`, `role`, `password`, `recovery_code`, `name`, `surname`, `city`, `country`, `avatar`, `avatar_small`) VALUES
+(4, 'mytest3004@mail.com', 'user', '$2y$10$bYcaKTa1wriOIc6/xd2cVeeCG98qZ7DvCthDSQoDvVn/.Pcw5/WOG', NULL, 'Bob', 'Pakerson', 'Texas', 'USA', NULL, NULL),
+(5, 'user1@mail.ru', 'admin', '$2y$10$BJbubhX2SE4SjGL86qaIeObzZsacGW.dRM9oyB56zUmE2kgVn3Ppu', NULL, 'Михаил ', 'Тарасов admin', 'Рязань', 'Россия', '574575273868.jpeg', '48-574575273868.jpeg');
 
 --
 -- Индексы сохранённых таблиц

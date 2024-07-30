@@ -20,10 +20,10 @@
             <div class="section__body">
 
                 <?php if (isset($uriArray[1])) : ?>
-                    <form action="<?= HOST ?>profile-edit/<?= $uriArray[1] ?>" method="POST">
-                    <?php else : ?>
-                        <form action="<?= HOST ?>profile-edit" method="POST">
-                        <?php endif; ?>
+                    <form enctype="multipart/form-data" action="<?= HOST ?>profile-edit/<?= $uriArray[1] ?>" method="POST">
+                <?php else : ?>
+                    <form enctype="multipart/form-data" action="<?= HOST ?>profile-edit" method="POST">
+                <?php endif; ?>
 
                         <div class="container">
                             <div class="row justify-content-center">
@@ -58,8 +58,7 @@
                                             <div class="block-upload__title">Фотография</div>
                                             <p>Изображение jpg или png, рекомендуемая ширина 945px и больше, высота от 400px и более. Вес до 2Мб.</p>
                                             <div class="block-upload__file-wrapper">
-                                                <button class="file-button" type="file">Выбрать файл</button>
-                                                <div class="block-upload__file-name">Файл не выбран</div>
+                                                <input name="avatar" class="file-button" type="file">
                                             </div>
                                         </div>
                                     </div>
