@@ -44,11 +44,17 @@
                         <!-- Профиль пуст -->
                         <div class="row justify-content-center">
                             <div class="col-md-8">
-                                <div class="enter-or-reg">
+
+                                <!-- enter-or-reg -->
+                                <div class="enter-or-reg flex-column flex-column-elements-margin">
                                     <div class="enter-or-reg__text">
                                         😐 Пустой профиль
                                     </div>
+                                    <!-- Кнопка редактирования профиля -->
+                                    <?php include ROOT . "templates/profile/_parts/button-edit-profile.tpl"; ?>
+
                                 </div>
+                                <!-- // enter-or-reg -->
                             </div>
                         </div>
 
@@ -103,25 +109,8 @@
 
                                 </div>
 
-                                <?php
-                                if (isset($_SESSION['login']) && $_SESSION['login'] === 1) {
-                                    // Если админ
-                                    if ($_SESSION['logged_user']['role'] === 'admin') {
-                                        echo "<a class=\"secondary-button\" href=\"" . HOST . "profile-edit/" . $user->id . "\">Редактировать</a>";
-                                        // Если Юзер
-                                    } else if ($_SESSION['logged_user']['role'] === 'user') {
-
-                                        // Юзер открыл свой профиль
-                                        if ($_SESSION['logged_user']['id'] === $user->id) {
-                                            echo "<a class=\"secondary-button\" href=\"" . HOST . "profile-edit\">Редактировать</a>";
-                                        }
-                                    }
-                                }
-                                ?>
-
-
-
-
+                                <!-- Кнопка редактирования профиля -->
+                                <?php include ROOT . "templates/profile/_parts/button-edit-profile.tpl"; ?>
 
                             </div>
                         </div>
