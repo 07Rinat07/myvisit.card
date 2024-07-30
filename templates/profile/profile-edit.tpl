@@ -21,9 +21,9 @@
 
                 <?php if (isset($uriArray[1])) : ?>
                     <form enctype="multipart/form-data" action="<?= HOST ?>profile-edit/<?= $uriArray[1] ?>" method="POST">
-                <?php else : ?>
-                    <form enctype="multipart/form-data" action="<?= HOST ?>profile-edit" method="POST">
-                <?php endif; ?>
+                    <?php else : ?>
+                        <form enctype="multipart/form-data" action="<?= HOST ?>profile-edit" method="POST">
+                        <?php endif; ?>
 
                         <div class="container">
                             <div class="row justify-content-center">
@@ -50,19 +50,35 @@
                             </div>
                             <div class="row justify-content-center pt-40 pb-40">
                                 <div class="col-2">
-                                    <div class="avatar-big"><img src="<?= HOST ?>static/img/section-about-me/img-01.jpg" alt="Аватарка" /></div>
+
+
+                                    <div class="avatar-big">
+
+                                        <?php if (!empty($user->avatar)) : ?>
+                                            <img src="<?= HOST ?>usercontent/avatars/<?= $user->avatar ?>" alt="Аватарка" />
+                                        <?php else : ?>
+                                            <img src="<?= HOST ?>usercontent/avatars/no-avatar.svg" alt="Аватарка" />
+                                        <?php endif; ?>
+
+                                    </div>
+
+
                                 </div>
                                 <div class="col-6">
                                     <div class="block-upload">
                                         <div class="block-upload__description">
                                             <div class="block-upload__title">Фотография</div>
-                                            <p>Изображение jpg или png, рекомендуемая ширина 945px и больше, высота от 400px и более. Вес до 2Мб.</p>
+                                            <p>Изображение jpg или png, рекомендуемая ширина 160px и больше, высота от 160px и более. Вес до 4Мб.</p>
                                             <div class="block-upload__file-wrapper">
                                                 <input name="avatar" class="file-button" type="file">
                                             </div>
                                         </div>
                                     </div>
-                                    <button class="delete-button mt-20" type="reset">Удалить</button>
+
+                                    <?php if (!empty($user->avatar)) : ?>
+                                        <button class="delete-button mt-20" type="reset">Удалить</button>
+                                    <?php endif; ?>
+
                                 </div>
                             </div>
                             <div class="row justify-content-center">

@@ -63,9 +63,14 @@
                         <!-- Профиль заполнен -->
                         <div class="row justify-content-center">
                             <div class="col-md-2">
-
                                 <div class="avatar-big">
-                                    <img src="<?= HOST ?>static/img/section-about-me/img-01.jpg" alt="Аватарка" />
+
+                                    <?php if (!empty($user->avatar)) : ?>
+                                        <img src="<?= HOST ?>usercontent/avatars/<?= $user->avatar ?>" alt="Аватарка" />
+                                    <?php else : ?>
+                                        <img src="<?= HOST ?>usercontent/avatars/no-avatar.svg" alt="Аватарка" />
+                                    <?php endif; ?>
+
                                 </div>
                             </div>
                             <div class="col-md-4">
