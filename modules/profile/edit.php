@@ -82,9 +82,6 @@ function updateUserandGoToProfile($user){
                     }
 
 
-
-
-
                     $db_file_name =
                     rand(100000000000, 999999999999) . "." . $fileExt;
                     $uploadfile160 = $avatarFolderLocation . $db_file_name;
@@ -107,6 +104,20 @@ function updateUserandGoToProfile($user){
                     $user->avatarSmall = '48-' . $db_file_name;
 
                 }
+
+            }
+
+            // Удаление аватарки
+            if ( isset($_POST['delete-avatar']) && $_POST['delete-avatar'] == 'on') {
+
+                // Удалить файлы аватарки
+                $avatarFolderLocation = ROOT . 'usercontent/avatars/';
+                unlink($avatarFolderLocation . $user->avatar);
+                unlink($avatarFolderLocation . '48-' . $user->avatar);
+
+                // Удалить записи в БД
+                $user->avatar = '';
+                $user->avatarSmall = '';
 
             }
 
