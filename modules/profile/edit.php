@@ -83,7 +83,7 @@ function updateUserandGoToProfile($user){
 
 
                     $db_file_name =
-                        rand(100000000000, 999999999999) . "." . $fileExt;
+                    rand(100000000000, 999999999999) . "." . $fileExt;
                     $uploadfile160 = $avatarFolderLocation . $db_file_name;
                     $uploadfile48 = $avatarFolderLocation . '48-' . $db_file_name;
 
@@ -122,13 +122,9 @@ function updateUserandGoToProfile($user){
             }
 
             R::store($user);
+            $_SESSION['logged_user'] = $user;
 
-            // Перезаписываем сессию - только когда пользователь редактирует свой профиль
-            if ( $user->id === $_SESSION['logged_user']['id'] ) {
-                $_SESSION['logged_user'] = $user;
-            }
-
-            header('Location: ' . HOST . 'profile/' . $user->id );
+            header('Location: ' . HOST . 'profile');
             exit();
 
         }
@@ -150,6 +146,7 @@ if ( isset($_SESSION['login']) && $_SESSION['login'] === 1) {
         // Это Администратор сайта
 
         // Делаем проверку на дополнительный параметр - ID пользователя для редактирования
+
         if (isset($uriArray[1])) {
             // Редактирование чужого профиля
             // Загружаем данные о профиле
@@ -185,6 +182,11 @@ if ( isset($_SESSION['login']) && $_SESSION['login'] === 1) {
 
 
 $pageTitle = "Профиль пользователя";
+
+// ob_start();
+// include ROOT . 'templates/about/about.tpl';
+// $content = ob_get_contents();
+// ob_end_clean();
 
 include ROOT . 'templates/_page-parts/_head.tpl';
 include ROOT . 'templates/_parts/_header.tpl';
