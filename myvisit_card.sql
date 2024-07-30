@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: localhost
--- Время создания: Июл 30 2024 г., 20:18
+-- Время создания: Июл 30 2024 г., 21:56
 -- Версия сервера: 8.0.37-0ubuntu0.22.04.3
 -- Версия PHP: 7.4.33
 
@@ -21,25 +21,6 @@ SET time_zone = "+00:00";
 --
 -- База данных: `myvisit.card`
 --
-
--- --------------------------------------------------------
-
---
--- Структура таблицы `about`
---
-
-CREATE TABLE `about` (
-  `id` int NOT NULL,
-  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `description` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='для тестового задания';
-
---
--- Дамп данных таблицы `about`
---
-
-INSERT INTO `about` (`id`, `name`, `description`) VALUES
-(1, 'Егор Казаков', 'Я веб разработчик');
 
 -- --------------------------------------------------------
 
