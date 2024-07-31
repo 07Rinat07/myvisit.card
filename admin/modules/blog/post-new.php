@@ -18,13 +18,10 @@ if (isset($_POST['postSubmit'])) {
         $post->content = $_POST['content'];
         R::store($post);
         $_SESSION['success'][] = ['title' => 'Пост успешно добавлен'];
-        header('Location: ' . HOST . 'blog');
+        header('Location: ' . HOST . 'admin/blog');
         exit();
     }
-
-
-
-
+    
 }
 
 // Центральный шаблон для модуля

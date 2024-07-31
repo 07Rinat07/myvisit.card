@@ -1,10 +1,6 @@
 <div class="admin-page__content">
     <div class="admin-page__content-form">
 
-        <pre>
-        <?php print_r($_POST); ?>
-        </pre>
-
         <form class="admin-form" method="POST" action="<?= HOST ?>admin/post-new">
 
             <?php include ROOT . 'admin/templates/components/errors.tpl'; ?>
