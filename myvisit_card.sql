@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: localhost
--- Время создания: Июл 31 2024 г., 20:29
+-- Время создания: Июл 31 2024 г., 21:02
 -- Версия сервера: 8.0.37-0ubuntu0.22.04.3
 -- Версия PHP: 7.4.33
 
@@ -31,15 +31,17 @@ SET time_zone = "+00:00";
 CREATE TABLE `posts` (
   `id` int UNSIGNED NOT NULL,
   `title` varchar(191) COLLATE utf8mb4_unicode_520_ci DEFAULT NULL,
-  `content` varchar(191) COLLATE utf8mb4_unicode_520_ci DEFAULT NULL
+  `content` varchar(191) COLLATE utf8mb4_unicode_520_ci DEFAULT NULL,
+  `cover` varchar(191) COLLATE utf8mb4_unicode_520_ci DEFAULT NULL,
+  `cover_small` varchar(191) COLLATE utf8mb4_unicode_520_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
 
 --
 -- Дамп данных таблицы `posts`
 --
 
-INSERT INTO `posts` (`id`, `title`, `content`) VALUES
-(1, 'new title test', 'test comment');
+INSERT INTO `posts` (`id`, `title`, `content`, `cover`, `cover_small`) VALUES
+(7, 'проверка', 'загрузка картинки', '326526097305.jpg', '290-326526097305.jpg');
 
 -- --------------------------------------------------------
 
@@ -93,7 +95,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT для таблицы `posts`
 --
 ALTER TABLE `posts`
-  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT для таблицы `users`

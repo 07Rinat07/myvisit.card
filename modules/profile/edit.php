@@ -25,10 +25,6 @@ function updateUserandGoToProfile($user){
             // Работа с файлом фотографии для аватара пользователя
             if ( isset($_FILES['avatar']['name']) && $_FILES['avatar']['tmp_name'] !== '') {
 
-                // echo $_FILES['avatar']['name'];
-                // echo $_FILES['avatar']['tmp_name'];
-                // die();
-
                 // 1. Записываем параметры файла в переменные
                 $fileName = $_FILES["avatar"]["name"];
                 $fileTmpLoc = $_FILES["avatar"]["tmp_name"];
