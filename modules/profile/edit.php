@@ -147,10 +147,10 @@ if ( isset($_SESSION['login']) && $_SESSION['login'] === 1) {
 
         // Делаем проверку на дополнительный параметр - ID пользователя для редактирования
 
-        if (isset($uriArray[1])) {
+        if (isset($uriGet)) {
             // Редактирование чужого профиля
             // Загружаем данные о профиле
-            $user = R::load('users', intval($uriArray[1]));
+            $user = R::load('users', intval($uriGet));
 
             // Обновляем данные пользователя, после оптравки формы
             updateUserandGoToProfile($user);
