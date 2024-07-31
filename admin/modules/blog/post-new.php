@@ -2,12 +2,24 @@
 
 if (isset($_POST['postSubmit'])) {
 
+    // Проверка на заполненность - Заголовок
     if (trim($_POST['title']) == '') {
         $_SESSION['errors'][] = ['title' => 'Введите заголовок поста'];
     }
 
+    // Проверка на заполненность - Содержимое
     if (trim($_POST['content']) == '') {
         $_SESSION['errors'][] = ['title' => 'Заполните содержимое поста'];
+    }
+
+    if (empty($_SESSION['errors'])) {
+        $post = R::dispense('posts');
+        $post->title = $_POST['title'];
+        $post->content = $_POST['content'];
+        R::store($post);
+        $_SESSION['success'][] = ['title' => 'Пост успешно добавлен'];
+        header('Location: ' . HOST . 'blog');
+        exit();
     }
 
 
