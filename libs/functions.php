@@ -19,7 +19,8 @@ function getModuleNameForAdmin()
     // Разбиваем строку запроса по символу / и получаем массив
     // admin/blog => ['admin', 'blog']
 
-    $uriModule = $moduleNameArr[1]; // Достаем имя модуля который надо запустить admin/blog => blog
+    // Достаем имя модуля который надо запустить admin/blog => blog
+    $uriModule = isset($moduleNameArr[1]) ? $moduleNameArr[1] : null;
 
     return $uriModule; // blog
 }

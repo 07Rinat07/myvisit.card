@@ -1,6 +1,8 @@
 <?php
 
-
+if (isset($_POST['postSubmit'])) {
+    
+}
 
 // Центральный шаблон для модуля
 ob_start();
