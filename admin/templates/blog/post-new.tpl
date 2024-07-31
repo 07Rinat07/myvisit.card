@@ -6,6 +6,10 @@
         </pre>
 
         <form class="admin-form" method="POST" action="<?= HOST ?>admin/post-new">
+
+            <?php include ROOT . 'admin/templates/components/errors.tpl'; ?>
+            <?php include ROOT . 'admin/templates/components/success.tpl'; ?>
+
             <div class="admin-form__item">
                 <h2 class="heading">Добавить пост </h2>
             </div>
