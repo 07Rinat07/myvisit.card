@@ -124,36 +124,29 @@ function rus_date(){
     }
 }
 
-// pagination(6, 'posts');
+function pagination($results_per_page, $type)
+{
+    // 18 постов
+    // по 6 постов на страницу
+    // Итого 3 страницы
 
-function pagination($results_per_page, $type) {
+    $number_of_results = R::count($type); // 18
+    $number_of_pages = ceil($number_of_results / $results_per_page); // 20 / 6 = 4
 
-    // Определяем текущий номер запрашиваемой страницы
     if (!isset($_GET['page'])) {
         $page_number = 1;
     } else {
-        $page_number = intval($_GET['page']); // 2-я страница пагинации
+        $page_number = $_GET['page'];
     }
 
-    // Считаем количество страниц пагинации
-    $number_of_results = R::count($type); // 18
-    $number_of_pages = ceil($number_of_results / $results_per_page); // 18 постов / 6 постов на страницу = 3 страницы
+    $starting_limit_number = ($page_number - 1) * $results_per_page;
+    $sql_pages_limit = "LIMIT {$starting_limit_number}, $results_per_page";
 
-    // Если запросили страницу котьорой не существует, то показываем последнюю доступнуюю
-    if ($page_number > $number_of_pages) {
-        $page_number = $number_of_pages;
-    }
+    // return $sql_pages_limit;
 
-    // Определяем с какого поста начать вывод
-    $starting_limit_number = ($page_number - 1) * $results_per_page; // (2-1)*6 = 6
-
-    // формируем подстроку для sql запроса
-    $sql_page_limit = "LIMIT {$starting_limit_number}, {$results_per_page}";
-
-    // Результирующий массив с данными
-    $result['number_of_pages'] = $number_of_pages;
-    $result['page_number'] = $page_number;
-    $result['sql_page_limit'] = $sql_page_limit;
+    $result['number_of_pages'] = $number_of_pages; // 3
+    $result['page_number'] = $page_number; // 2
+    $result['sql_pages_limit'] = $sql_pages_limit; // LIMIT 6, 6
 
     return $result;
 }
