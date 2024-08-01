@@ -3,8 +3,8 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: localhost
--- Время создания: Июл 31 2024 г., 21:02
--- Версия сервера: 8.0.37-0ubuntu0.22.04.3
+-- Время создания: Авг 01 2024 г., 15:40
+-- Версия сервера: 8.0.39-0ubuntu0.22.04.1
 -- Версия PHP: 7.4.33
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -33,15 +33,19 @@ CREATE TABLE `posts` (
   `title` varchar(191) COLLATE utf8mb4_unicode_520_ci DEFAULT NULL,
   `content` varchar(191) COLLATE utf8mb4_unicode_520_ci DEFAULT NULL,
   `cover` varchar(191) COLLATE utf8mb4_unicode_520_ci DEFAULT NULL,
-  `cover_small` varchar(191) COLLATE utf8mb4_unicode_520_ci DEFAULT NULL
+  `cover_small` varchar(191) COLLATE utf8mb4_unicode_520_ci DEFAULT NULL,
+  `timestamp` int UNSIGNED DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
 
 --
 -- Дамп данных таблицы `posts`
 --
 
-INSERT INTO `posts` (`id`, `title`, `content`, `cover`, `cover_small`) VALUES
-(7, 'проверка', 'загрузка картинки', '326526097305.jpg', '290-326526097305.jpg');
+INSERT INTO `posts` (`id`, `title`, `content`, `cover`, `cover_small`, `timestamp`) VALUES
+(7, 'проверка', 'загрузка картинки', '326526097305.jpg', '290-326526097305.jpg', NULL),
+(10, 'лес', 'фото в лесу', '485184928932.jpg', '290-485184928932.jpg', NULL),
+(14, 'работа с датой и временем', 'проверка тест с датой и временем', NULL, NULL, 1722508270),
+(15, 'sea', 'test again ', '889458563133.jpg', '290-889458563133.jpg', 1722508768);
 
 -- --------------------------------------------------------
 
@@ -95,7 +99,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT для таблицы `posts`
 --
 ALTER TABLE `posts`
-  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT для таблицы `users`
