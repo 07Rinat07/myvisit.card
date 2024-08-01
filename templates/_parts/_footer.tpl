@@ -6,7 +6,7 @@
         <div class="row">
             <div class="col section-footer__copyright">
                 <p>© Rinat developer</p>
-                <p>Создано в 2024 году.</p>
+                <p>Создано в WebCademy.ru в 2024 году.</p>
             </div>
             <div class="col section-social-icons">
                 <div class="footer-icons"><a href="#"><img src="<?= HOST ?>static/img/favicons/youtube-brands.svg" alt="Youtube" width="30" height="21" /></a></div>
