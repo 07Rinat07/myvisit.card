@@ -1,6 +1,6 @@
 <?php
 
-require "./../resize-and-crop.php";
+require "./../resize.php";
 
 // Если передано изображение - уменьшаем, сохраняем, записываем в БД
 // Работа с файлом фотографии для аватара пользователя
@@ -47,15 +47,25 @@ if (isset($_FILES['upload']['name']) && $_FILES['upload']['tmp_name'] !== '') {
             rand(100000000000, 999999999999) . "." . $fileExt;
         $uploadfile = $coverFolderLocation . $db_file_name;
 
+        // Если ширина или высота больше 920px тогда масштабируем изображение
+        if ( $width > 920 || $height > 920) {
+            // Масштабируем изображение
+            $result = resize($fileTmpLoc, $uploadfile, 920);
 
-        // Обработать фотографию
-        // 1. Обрезать по ширине до 920px, если меньше то не увиливать
-        $result = resize_and_crop($fileTmpLoc, $uploadfile, 920, 400);
+            if ($result != true) {
+                $message =  'Ошибка сохранения файла при масштабировании';
+                return false;
+            }
+        } else {
+            $result = move_uploaded_file($fileTmpLoc, $uploadfile);
 
-        if ($result != true) {
-            $_SESSION['errors'][] = ['title' => 'Ошибка сохранения файла'];
-            return false;
+            if ($result != true) {
+                $message =  'Ошибка перемещения файла';
+                return false;
+            }
         }
+
+
 
         // Сохраняем имя файла в БД
         $url = HOST . "usercontent/editor-uploads/" . $db_file_name;
