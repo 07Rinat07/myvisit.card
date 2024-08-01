@@ -3,6 +3,7 @@
 $pageTitle = "Блог - все записи";
 
 if ( isset($uriGet) ) {
+
     // Выводим отдельный пост
     $post = R::load('posts', $uriGet);
 
@@ -15,8 +16,22 @@ if ( isset($uriGet) ) {
 
 
 } else {
-    // Выводим все посты
-    $posts = R::find('posts', 'ORDER BY id DESC');
+
+    // Количество постов на странице
+    $results_per_page = 6;
+
+    // Определяем текущий номер запрашиваемой страницы
+    if (!isset($_GET['page'])) {
+        $page_number = 1;
+    } else {
+        $page_number = $_GET['page']; // 2-я страница пагинации
+    }
+
+    // Определяем с какого поста начать вывод
+    $starting_limit_number = ($page_number - 1) * $results_per_page; // (2-1)*6 = 6
+
+    // Делаем запрос в БД для получения постов
+    $posts = R::find('posts', "ORDER BY id ASC LIMIT {$starting_limit_number}, {$results_per_page}");
 
     // Центральный шаблон для модуля
     ob_start();
