@@ -123,6 +123,3 @@ function rus_date(){
         return strtr(date(func_get_arg(0)), $translate);
     }
 }
-
-echo rus_date("j F Y H:i", time());
-die();
