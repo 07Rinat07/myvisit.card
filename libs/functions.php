@@ -135,15 +135,22 @@ function pagination($results_per_page, $type) {
         $page_number = intval($_GET['page']); // 2-я страница пагинации
     }
 
-    // Определяем с какого поста начать вывод
-    $starting_limit_number = ($page_number - 1) * $results_per_page; // (2-1)*6 = 6
-
     // Считаем количество страниц пагинации
     $number_of_results = R::count($type); // 18
     $number_of_pages = ceil($number_of_results / $results_per_page); // 18 постов / 6 постов на страницу = 3 страницы
 
+    // Если запросили страницу котьорой не существует, то показываем последнюю доступнуюю
+    if ($page_number > $number_of_pages) {
+        $page_number = $number_of_pages;
+    }
+
+    // Определяем с какого поста начать вывод
+    $starting_limit_number = ($page_number - 1) * $results_per_page; // (2-1)*6 = 6
+
+    // формируем подстроку для sql запроса
     $sql_page_limit = "LIMIT {$starting_limit_number}, {$results_per_page}";
 
+    // Результирующий массив с данными
     $result['number_of_pages'] = $number_of_pages;
     $result['page_number'] = $page_number;
     $result['sql_page_limit'] = $sql_page_limit;
