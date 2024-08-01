@@ -10,6 +10,14 @@ $_SESSION['success'] = array();
 
 session_start();
 
+echo time();
+echo "<br>";
+$date = getdate(time());
+print_r($date);
+echo "<br>";
+echo date('r');
+die();
+
 /* ..........................................
 
 РОУТЕР // ROUTE - МАРШРУТ
