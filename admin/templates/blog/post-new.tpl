@@ -16,6 +16,7 @@
                 <input name="title" class="input input--width-label" type="text" placeholder="Заголовок поста" />
             </label>
         </div>
+        <?php /*
         <div class="admin-form__item">
             <label class="select-label">Выберите категорию
                 <select class="select">
@@ -25,6 +26,7 @@
                 </select>
             </label>
         </div>
+        */ ?>
         <div class="admin-form__item">
             <label class="textarea__label mb-15" for="editor">Содержимое поста</label>
             <textarea name="content" class="textarea textarea--width-label" placeholder="Введите текст" id="editor"></textarea>
@@ -43,7 +45,8 @@
 
         </div>
         <div class="admin-form__item buttons">
-            <button name="postSubmit" class="primary-button" type="submit">Опубликовать</button><a class="secondary-button" href="#">Отмена</a>
+            <button name="postSubmit" class="primary-button" type="submit">Опубликовать</button>
+            <a class="secondary-button" href="<?= HOST ?>admin/blog">Отмена</a>
         </div>
         <div class="admin-form__item"></div>
         <div class="admin-form__item"></div>
@@ -53,6 +56,6 @@
 <script>
     CKEDITOR.replace('editor', {
         filebrowserUploadMethod: 'form',
-        filebrowserUploadUrl: '<?php echo HOST;?>libs/ck-upload/upload.php'
+        filebrowserUploadUrl: '<?php echo HOST; ?>libs/ck-upload/upload.php'
     });
 </script>
