@@ -8,7 +8,7 @@
         <?php include ROOT . 'admin/templates/components/success.tpl'; ?>
 
         <div class="admin-form__item">
-            <h2 class="heading">Добавить пост </h2>
+            <h2 class="heading">Редактировать пост</h2>
         </div>
         <div class="admin-form__item">
             <label class="input__label">
@@ -39,7 +39,17 @@
                         <input name="cover" class="file-button" type="file">
                     </div>
                 </div>
+                <div class="block-upload__img">
+                    <img src="<?= HOST ?>static/img/block-upload/block-upload.jpg" alt="Загрузка картинки" />
+                </div>
             </div>
+
+            <?php /* if (!empty($user->avatar)) : ?>
+                <label class="checkbox__item mt-15">
+                    <input class="checkbox__btn" type="checkbox" name="delete-avatar">
+                    <span class="checkbox__label">Удалить фотографию</span>
+                </label>
+            <?php endif; */ ?>
 
         </div>
         <div class="admin-form__item buttons">
@@ -53,6 +63,6 @@
 <script>
     CKEDITOR.replace('editor', {
         filebrowserUploadMethod: 'form',
-        filebrowserUploadUrl: '<?php echo HOST;?>libs/ck-upload/upload.php'
+        filebrowserUploadUrl: '<?php echo HOST; ?>libs/ck-upload/upload.php'
     });
 </script>

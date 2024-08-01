@@ -17,12 +17,12 @@
                 </tr>
             </thead>
             <tbody>
-                <?php foreach ($posts as $post): ?>
+                <?php foreach ($posts as $post) : ?>
                     <tr>
-                        <td><?=$post['id']?></td>
-                        <td><a href="<?php echo HOST . "admin/"; ?>post-edit?id=<?=$post['id']?>"><?=$post['title']?></a></td>
+                        <td><?= $post['id'] ?></td>
+                        <td><a href="<?php echo HOST . "admin/"; ?>post-edit?id=<?= $post['id'] ?>"><?= $post['title'] ?></a></td>
                         <td>
-                            <button class="icon-delete"></button>
+                            <a href="<?php echo HOST . "admin/"; ?>post-delete?id=<?= $post['id'] ?>" class="icon-delete"></a>
                         </td>
                     </tr>
                 <?php endforeach; ?>
