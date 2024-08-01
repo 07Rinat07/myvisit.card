@@ -1,3 +1,3 @@
 <?php
 
-echo "<h1>blog/index.php</h1>";
+echo "<h1>Blog</h1>";
