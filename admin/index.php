@@ -51,19 +51,19 @@ switch ($uriModule) {
     // ::::::::::::::::::: CATEGORIES :::::::::::::::::::
 
     case 'category':
-        require ROOT . "admin/modules/categories/categories.php";
+        require ROOT . "admin/modules/categories/all.php";
         break;
 
     case 'category-new':
-        require ROOT . "admin/modules/categories/category-new.php";
+        require ROOT . "admin/modules/categories/new.php";
         break;
 
     case 'category-edit':
-        require ROOT . "admin/modules/categories/category-edit.php";
+        require ROOT . "admin/modules/categories/edit.php";
         break;
 
     case 'category-delete':
-        require ROOT . "admin/modules/categories/category-delete.php";
+        require ROOT . "admin/modules/categories/delete.php";
         break;
 
     // ::::::::::::::::::: OTHERS :::::::::::::::::::
