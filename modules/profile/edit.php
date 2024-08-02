@@ -26,6 +26,13 @@ function updateUserandGoToProfile($user){
             // Если передано изображение - уменьшаем, сохраняем, записываем в БД
             $avatarFileName = saveUploadedImg('avatar', [160, 160], 12, 'avatars', [160, 160], [48, 48]);
 
+            // Если новое изображение успешно загружено тогда удаляем старое
+            if ($avatarFileName) {
+                // Удаляем старое изображение
+                unlink(ROOT . 'usercontent/avatars/' . $user->avatar);
+                unlink(ROOT . 'usercontent/avatars/' . $user->avatarSmall);
+            }
+
             // Сохраняем имя файла в БД
             $user->avatar = $avatarFileName[0];
             $user->avatarSmall = $avatarFileName[1];
