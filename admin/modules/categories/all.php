@@ -1,6 +1,6 @@
 <?php
 
-// $posts = R::find('posts', 'ORDER BY id DESC');
+$cats = R::find('categories', 'ORDER BY id DESC');
 
 // Центральный шаблон для модуля
 ob_start();

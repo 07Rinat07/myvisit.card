@@ -15,7 +15,7 @@
             </label>
         </div>
         <div class="admin-form__item buttons">
-            <button name="postSubmit" class="primary-button" type="submit">Создать</button>
+            <button name="submit" class="primary-button" type="submit">Создать</button>
             <a class="secondary-button" href="<?= HOST ?>admin/category">Отмена</a>
         </div>
         <div class="admin-form__item"></div>

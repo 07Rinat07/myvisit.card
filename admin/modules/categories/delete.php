@@ -1,6 +1,13 @@
 <?php
 
-// $posts = R::find('posts', 'ORDER BY id DESC');
+$cat = R::load('categories', $_GET['id']);
+
+if (isset($_POST['submit'])) {
+    R::trash($cat);
+    $_SESSION['success'][] = ['title' => 'Категория была удалена'];
+    header('Location:' . HOST . 'admin/category');
+    exit();
+}
 
 // Центральный шаблон для модуля
 ob_start();
