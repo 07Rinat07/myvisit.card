@@ -26,7 +26,9 @@
             <label class="select-label">Выберите категорию
                 <select class="select" name="cat">
                     <?php foreach($cats as $cat): ?>
-                        <option <?php echo $post['cat'] == $cat['id'] ? 'selected' : '555'; ?> value="<?=$cat['id']?>"><?=$cat['title']?></option>
+                        <option <?php echo $post['cat'] == $cat['id'] ? 'selected' : '555'; ?> value="<?=$cat['id']?>">
+                            <?=$cat['cat_title']?>
+                        </option>
                     <?php endforeach; ?>
                 </select>
             </label>

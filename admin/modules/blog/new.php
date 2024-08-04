@@ -1,6 +1,6 @@
 <?php
 
-$cats = R::find('categories', 'ORDER BY title ASC');
+$cats = R::find('categories', 'ORDER BY cat_title ASC');
 
 if (isset($_POST['postSubmit'])) {
 
@@ -22,11 +22,14 @@ if (isset($_POST['postSubmit'])) {
         $post->timestamp = time();
 
         // Если передано изображение - уменьшаем, сохраняем, записываем в БД
-        $coverFileName = saveUploadedImg('cover', [600, 300], 12, 'blog', [1110, 460], [290, 230]);
+        if (isset($_FILES['cover']['name']) && $_FILES['cover']['tmp_name'] !== '') {
+            // Обрабатываем картинку, сохраняем, и получаем имя файла
+            $coverFileName = saveUploadedImg('cover', [600, 300], 12, 'blog', [1110, 460], [290, 230]);
 
-        // Сохраняем имя файла в БД
-        $post->cover = $coverFileName[0];
-        $post->coverSmall = $coverFileName[1];
+            // Сохраняем имя файла в БД
+            $post->cover = $coverFileName[0];
+            $post->coverSmall = $coverFileName[1];
+        }
 
         R::store($post);
         $_SESSION['success'][] = ['title' => 'Пост успешно добавлен'];

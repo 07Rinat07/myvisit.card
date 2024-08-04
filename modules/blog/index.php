@@ -4,7 +4,17 @@ $pageTitle = "Блог - все записи";
 
 if (isset($uriGet)) {
     // Выводим отдельный пост
-    $post = R::load('posts', $uriGet);
+    // $post = R::load('posts', $uriGet);
+
+    $sqlQuery = 'SELECT
+                    posts.id, posts.title, posts.content,
+                    posts.cover, posts.timestamp, posts.edit_time, posts.cat,
+                    categories.cat_title
+                FROM `posts`
+                LEFT JOIN `categories` ON posts.cat = categories.id
+                WHERE posts.id = ' . $uriGet . ' LIMIT 1';
+
+    $post = R::getRow($sqlQuery);
 
     // Центральный шаблон для модуля
     ob_start();
@@ -16,7 +26,7 @@ if (isset($uriGet)) {
     $pagination = pagination(6, 'posts');
 
     // Выводим все посты
-    $posts = R::find('posts', 'ORDER BY id ASC ' . $pagination['sql_pages_limit']);
+    $posts = R::find('posts', 'ORDER BY id DESC ' . $pagination['sql_pages_limit']);
 
     // Центральный шаблон для модуля
     ob_start();

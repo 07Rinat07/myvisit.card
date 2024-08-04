@@ -22,20 +22,26 @@ function updateUserandGoToProfile($user){
             $user->city = htmlentities($_POST['city']);
             $user->country = htmlentities($_POST['country']);
 
-
             // Если передано изображение - уменьшаем, сохраняем, записываем в БД
-            $avatarFileName = saveUploadedImg('avatar', [160, 160], 12, 'avatars', [160, 160], [48, 48]);
+            if (isset($_FILES['avatar']['name']) && $_FILES['avatar']['tmp_name'] !== '') {
+                // Обрабатываем картинку, сохраняем, и получаем имя файла
+                $avatarFileName = saveUploadedImg('avatar', [160, 160], 12, 'avatars', [160, 160], [48, 48]);
 
-            // Если новое изображение успешно загружено тогда удаляем старое
-            if ($avatarFileName) {
-                // Удаляем старое изображение
-                unlink(ROOT . 'usercontent/avatars/' . $user->avatar);
-                unlink(ROOT . 'usercontent/avatars/' . $user->avatarSmall);
+                // Если новое изображение успешно загружено тогда удаляем старое
+                if ($avatarFileName) {
+                    // Удаляем старое изображение
+                    if (file_exists(ROOT . 'usercontent/avatars/' . $user->avatar) && !empty($user->avatar)){
+                        unlink(ROOT . 'usercontent/avatars/' . $user->avatar);
+                    }
+                    if (file_exists(ROOT . 'usercontent/avatars/' . $user->avatarSmall) && !empty($user->avatarSmall)  ) {
+                        unlink(ROOT . 'usercontent/avatars/' . $user->avatarSmall);
+                    }
+                }
+
+                // Сохраняем имя файла в БД
+                $user->avatar = $avatarFileName[0];
+                $user->avatarSmall = $avatarFileName[1];
             }
-
-            // Сохраняем имя файла в БД
-            $user->avatar = $avatarFileName[0];
-            $user->avatarSmall = $avatarFileName[1];
 
             // Удаление аватарки
             if ( isset($_POST['delete-avatar']) && $_POST['delete-avatar'] == 'on') {
