@@ -18,6 +18,7 @@ session_start();
 
 $uriModule = getModuleName();
 $uriGet = getUriGet();
+$uriGetParam = getUriGetParam();
 
 // Роутер
 switch ($uriModule) {
