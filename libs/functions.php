@@ -146,16 +146,11 @@ function pagination($results_per_page, $type, $params = null)
     // по 6 постов на страницу
     // Итого 3 страницы
 
-    // $number_of_results = R::count($type); // 18
-
     if (empty($params)) {
         $number_of_results = R::count($type);
     } else {
         $number_of_results = R::count($type, $params[0], $params[1]);
     }
-
-
-
 
     $number_of_pages = ceil($number_of_results / $results_per_page); // 20 / 6 = 4
 

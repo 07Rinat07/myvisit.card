@@ -8,8 +8,8 @@
 				<span>
 					<?php echo rus_date("j F Y", $post['timestamp']); ?>
 				</span>
-				<?php if (!empty($post['cat_title'])): ?>
-					<div class="badge"><?= $post['cat_title'] ?></div>
+				<?php if (!empty($post['cat_title'])) : ?>
+					<a href="<?= HOST ?>blog/cat/<?= $post['cat'] ?>" class="badge"><?= $post['cat_title'] ?></a>
 				<?php endif; ?>
 			</div>
 

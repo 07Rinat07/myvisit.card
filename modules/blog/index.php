@@ -9,7 +9,11 @@ if (isset($uriGet)) {
 
         if (!empty($uriGetParam)) {
 
-            $pagination = pagination(6, 'posts', [' cat = ? ', [4]]);
+            $category = R::load('categories', $uriGetParam);
+            $pageTitle = "Категория: {$category['cat_title']}";
+            $catTitle = "Категория: {$category['cat_title']}";
+
+            $pagination = pagination(6, 'posts', [' cat = ? ', [$uriGetParam]]);
             $posts  = R::findLike('posts', ['cat' => [$uriGetParam]], 'ORDER BY id DESC ' . $pagination['sql_pages_limit'] );
 
             // Центральный шаблон для модуля

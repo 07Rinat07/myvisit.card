@@ -80,3 +80,9 @@ html {
 .section-posts__info > * + * {
     margin-left: 15px;
 }
+
+a.badge:hover {
+    color: #fff;
+    text-decoration: none;
+    background-color: rgb(87, 87, 87);
+}
