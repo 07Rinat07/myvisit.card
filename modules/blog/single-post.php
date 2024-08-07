@@ -16,6 +16,16 @@ $sqlQuery = 'SELECT
 
 $post = R::getRow($sqlQuery);
 
+// Кнопки Назад и Вперед
+$postsId = R::getCol('SELECT id FROM posts');
+foreach ($postsId as $index => $value) {
+    if ($post['id'] == $value) {
+        $nextId = array_key_exists($index + 1, $postsId) ? $postsId[$index + 1] : null;
+        $prevId = array_key_exists($index - 1, $postsId) ? $postsId[$index - 1] : null;
+    }
+}
+
+
 // Центральный шаблон для модуля
 ob_start();
 include ROOT . 'templates/blog/single-post.tpl';

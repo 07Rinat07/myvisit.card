@@ -23,9 +23,9 @@
 				<?= $post['content'] ?>
 			</div>
 		</div>
-		<div class="page-post__post-pagination">
-			<div class="post-pagination"> <a class="post-pagination__button" href="#">Назад </a><a class="post-pagination__button post-pagination__button--forward" href="#">Вперед</a></div>
-		</div>
+
+		<?php include ROOT . "templates/blog/parts/post-nav.tpl";?>
+
 	</section>
 	<section class="page-post__comments">
 		<div class="page-post__title">
