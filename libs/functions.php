@@ -146,25 +146,39 @@ function pagination($results_per_page, $type, $params = null)
     // по 6 постов на страницу
     // Итого 3 страницы
 
+    // Считаем количество результатов (постов например)
+    // Проверка переданы ли дополнительные параметры, например категория в блоге или нет
     if (empty($params)) {
+        // Если параметров нет, то просто смотрим сколько постов в блоге
         $number_of_results = R::count($type);
     } else {
+        // Если параметры есть - тогда смотрим сколько постов в блоге !!!в данной категории!!!
         $number_of_results = R::count($type, $params[0], $params[1]);
     }
 
+    // Считаем количество страниц пагинации
     $number_of_pages = ceil($number_of_results / $results_per_page); // 20 / 6 = 4
 
+    // Определяем текущий номер запрашиваемой страницы
     if (!isset($_GET['page'])) {
         $page_number = 1;
     } else {
         $page_number = $_GET['page'];
     }
 
+    // Если запросили страницу котьорой не существует, то показываем последнюю доступнуюю
+    if ($page_number > $number_of_pages) {
+        $page_number = $number_of_pages;
+    }
+
+    // Определяем с какого поста начать вывод
     $starting_limit_number = ($page_number - 1) * $results_per_page;
+    // формируем подстроку для sql запроса
     $sql_pages_limit = "LIMIT {$starting_limit_number}, $results_per_page";
 
     // return $sql_pages_limit;
 
+    // Результирующий массив с данными
     $result['number_of_pages'] = $number_of_pages; // 3
     $result['page_number'] = $page_number; // 2
     $result['sql_pages_limit'] = $sql_pages_limit; // LIMIT 6, 6
