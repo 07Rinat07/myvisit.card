@@ -32,71 +32,7 @@ $sqlQueryComments = 'SELECT comments.text, comments.user, comments.timestamp,
 $comments = R::getAll($sqlQueryComments, [$post['id']]);
 
 // Вывод похожих постов
-$wordsArray = explode(' ', $post['title']);
-$wordsArray = array_unique($wordsArray);
-
-// Массив со стоп словами (предлоги, союзы, можно добавить другие "общие" слова)
-$stopWords = ['и', 'на', 'в', 'а', 'под', 'если', 'за', '-', 'что', 'самом', 'деле', 'означает'];
-
-// Новый обработанный массив
-$newWordsArray = array();
-
-foreach ($wordsArray as $word){
-
-    // переводим в нижний регистр
-    $word = mb_strtolower($word);
-
-    // Удаляем кавычки и лишние символы
-    $word = str_replace('"', "", $word);
-    $word = str_replace("'", "", $word);
-    $word = str_replace("»", "", $word);
-    $word = str_replace("«", "", $word);
-    $word = str_replace(",", "", $word);
-    $word = str_replace(".", "", $word);
-
-    // Проверяем наличие слова в стоп списке
-    if ( !in_array($word, $stopWords) ) {
-
-        // Обрезаем окончания
-        if (mb_strlen($word) > 4) {
-            $word = mb_substr($word, 0, -2);
-        } else if (mb_strlen($word) > 3) {
-            $word = mb_substr($word, 0, -1);
-        }
-
-        // Добавляем символ шаблона
-        $word = '%' . $word . '%';
-
-        // Добавляем слова в новый массив
-        $newWordsArray[] = $word;
-    }
-}
-
-// print_r($newWordsArray);
-
-// SQL запрос который нужно сформировать
-// $relatedPosts = R::getAll('SELECT * FROM `posts` WHERE title LIKE ? OR title LIKE ?', ['%Москва%', '%Ford%']);
-
-$sqlQuery = 'SELECT * FROM `posts` WHERE ';
-
-for ($i = 0; $i < count($newWordsArray); $i++) {
-    if ($i + 1 == count($newWordsArray)) {
-        // Последний цикл
-        $sqlQuery .= 'title LIKE ?';
-    } else {
-        $sqlQuery .= 'title LIKE ? OR ';
-    }
-}
-
-$sqlQuery .= ' order by RAND() LIMIT 3';
-
-// echo $sqlQuery;
-// die();
-
-$relatedPosts = R::getAll($sqlQuery, $newWordsArray);
-
-print_r($relatedPosts);
-die();
+$relatedPosts = get_related_posts($post['title']);
 
 // Центральный шаблон для модуля
 ob_start();
