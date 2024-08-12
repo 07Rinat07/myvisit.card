@@ -86,3 +86,11 @@ a.badge:hover {
     text-decoration: none;
     background-color: rgb(87, 87, 87);
 }
+
+.admin-section-title {
+    font-size: 26px;
+    font-weight: 600;
+    margin: 30px -30px 20px;
+    padding: 15px 30px;
+    background-color: #efefef;
+}

@@ -34,6 +34,13 @@
                         </div>Страницы
                     </a>
                 </li>
+                <li class="control-panel__list-item">
+                    <a class="control-panel__list-link" href="<?= HOST ?>admin/contacts">
+                        <div class="control-panel__list-img-wrapper">
+                            <img class="control-panel__list-img" src="<?= HOST ?>static/img/control-panel/mail.svg" alt="icon" />
+                        </div>Контакты
+                    </a>
+                </li>
                 <li class="control-panel__list-item"><a class="control-panel__list-link" href="#">
                         <div class="control-panel__list-img-wrapper"><img class="control-panel__list-img" src="<?= HOST ?>static/img/control-panel/mail.svg" alt="icon" />
                             <div class="control-panel__list-img-badge">8</div>
