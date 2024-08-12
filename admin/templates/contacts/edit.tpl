@@ -2,7 +2,7 @@
 
 <div class="admin-page__content-form">
 
-    <form enctype="multipart/form-data" class="admin-form" method="POST" action="<?= HOST ?>admin/post-edit?id=<?= $post['id'] ?>">
+    <form class="admin-form" method="POST" action="<?= HOST ?>admin/contacts">
 
         <?php include ROOT . 'admin/templates/components/errors.tpl'; ?>
         <?php include ROOT . 'admin/templates/components/success.tpl'; ?>
@@ -11,19 +11,18 @@
             <h2 class="heading">Редактировать контакты</h2>
         </div>
 
-
         <h3 class="admin-section-title">Обо мне</h3>
 
         <div class="admin-form__item">
             <label class="input__label">
                 Заголовок
-                <input name="title" class="input input--width-label" type="text" placeholder="Заголовок секции" value="<?= $post['title'] ?>" />
+                <input name="about_title" class="input input--width-label" type="text" placeholder="Заголовок секции" value="<?= $contacts['about_title'] ?>" />
             </label>
         </div>
 
         <div class="admin-form__item">
             <label class="textarea__label mb-15" for="editor">Содержимое поста</label>
-            <textarea name="content" class="textarea textarea--width-label" placeholder="Введите текст" id="editor"><?= $post['content'] ?></textarea>
+            <textarea name="about_text" class="textarea textarea--width-label" placeholder="Введите текст" id="about_text"><?= $contacts['about_text'] ?></textarea>
         </div>
 
 
@@ -35,13 +34,13 @@
         <div class="admin-form__item">
             <label class="input__label">
                 Заголовок
-                <input name="title" class="input input--width-label" type="text" placeholder="Заголовок секции" value="<?= $post['title'] ?>" />
+                <input name="services_title" class="input input--width-label" type="text" placeholder="Заголовок секции" value="<?= $contacts['services_title'] ?>" />
             </label>
         </div>
 
         <div class="admin-form__item">
             <label class="textarea__label mb-15" for="editor">Содержимое поста</label>
-            <textarea name="content" class="textarea textarea--width-label" placeholder="Введите текст" id="editor"><?= $post['content'] ?></textarea>
+            <textarea name="services_text" class="textarea textarea--width-label" placeholder="Введите текст" id="services_text"><?= $contacts['services_text'] ?></textarea>
         </div>
 
 
@@ -51,32 +50,36 @@
         <div class="admin-form__item">
             <label class="input__label">
                 Заголовок
-                <input name="title" class="input input--width-label" type="text" placeholder="Заголовок секции" value="<?= $post['title'] ?>" />
+                <input name="contacts_title" class="input input--width-label" type="text" placeholder="Заголовок секции" value="<?= $contacts['contacts_title'] ?>" />
             </label>
         </div>
 
         <div class="admin-form__item">
             <label class="textarea__label mb-15" for="editor">Содержимое поста</label>
-            <textarea name="content" class="textarea textarea--width-label" placeholder="Введите текст" id="editor"><?= $post['content'] ?></textarea>
+            <textarea name="contacts_text" class="textarea textarea--width-label" placeholder="Введите текст" id="contacts_text"><?= $contacts['contacts_text'] ?></textarea>
         </div>
 
 
-
-
-
-
         <div class="admin-form__item buttons">
-            <button name="postEdit" class="primary-button" type="submit">
+            <button name="submit" class="primary-button" type="submit">
                 Сохранить изменения
             </button>
-            <a class="secondary-button" href="<?= HOST ?>admin/blog">Отмена</a>
+            <a class="secondary-button" href="<?= HOST ?>admin">Отмена</a>
         </div>
 
     </form>
 </div>
 
 <script>
-    CKEDITOR.replace('editor', {
+    CKEDITOR.replace('about_text', {
+        filebrowserUploadMethod: 'form',
+        filebrowserUploadUrl: '<?php echo HOST; ?>libs/ck-upload/upload.php'
+    });
+    CKEDITOR.replace('services_text', {
+        filebrowserUploadMethod: 'form',
+        filebrowserUploadUrl: '<?php echo HOST; ?>libs/ck-upload/upload.php'
+    });
+    CKEDITOR.replace('contacts_text', {
         filebrowserUploadMethod: 'form',
         filebrowserUploadUrl: '<?php echo HOST; ?>libs/ck-upload/upload.php'
     });
