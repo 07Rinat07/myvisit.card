@@ -125,3 +125,7 @@ a.badge:hover {
     border-radius: 50%;
     background-color: #000000;
 }
+
+.admin-form__item {
+    line-height: 1.5;
+}
