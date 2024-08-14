@@ -35,7 +35,20 @@ if (isset($_POST['submit'])) {
     }
 }
 
-$contacts = R::load('contacts', 1);
+
+// Получаем массив с нужными настройками
+$settingsContacts = R::find('settings', ' section LIKE ? ', ['contacts']);
+
+// Для вывода в шаблоне нашими ключами должны стать значения из поля 'name':
+// about_title, about_text, services_title и т.д.
+// Значит надо сформировать новый массив с такими ключами из 'name' и значениями из 'value'
+
+// Создаем массив который наполним
+$contacts = [];
+
+foreach ($settingsContacts as $key => $value) {
+    $contacts[$value['name']] = $value['value'];
+}
 
 include ROOT . 'templates/_page-parts/_head.tpl';
 include ROOT . 'templates/_parts/_header.tpl';
