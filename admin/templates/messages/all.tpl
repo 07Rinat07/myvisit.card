@@ -15,38 +15,29 @@
                     <th>Отправитель</th>
                     <th>Email</th>
                     <th>Текст</th>
+                    <th>Время</th>
                     <th>Файл</th>
                     <th></th>
                 </tr>
             </thead>
             <tbody>
-                <?php /* foreach ($cats as $cat) : ?>
+                <?php foreach ($messages as $message) : ?>
                     <tr>
-                        <td><?= $cat['id'] ?></td>
+                        <td><?= $message['id'] ?></td>
                         <td>
-                            <a href="<?php echo HOST . "admin/"; ?>category-edit?id=<?= $cat['id'] ?>">
-                                <?= $cat['title'] ?>
+                            <a href="<?= HOST ?>admin/message?id=<?= $message['id'] ?>">
+                                <?= $message['name'] ?>
                             </a>
                         </td>
+                        <td><?= $message['email'] ?></td>
+                        <td><a href="<?= HOST ?>admin/message?id=<?= $message['id'] ?>"><?= $message['message'] ?></a></td>
+                        <td><?php echo rus_date("j.m.Y H:i", $message['time']); ?></td>
+                        <td>photo.jpg</td>
                         <td>
                             <a href="<?php echo HOST . "admin/"; ?>category-delete?id=<?= $cat['id'] ?>" class="icon-delete"></a>
                         </td>
                     </tr>
-                <?php endforeach; */ ?>
-                <tr>
-                    <td>1</td>
-                    <td>
-                        <a href="<?= HOST ?>admin/message?id=1">
-                            Юрий
-                        </a>
-                    </td>
-                    <td>info@mail.com</td>
-                    <td><a href="<?= HOST ?>admin/message?id=1">Короткий текст сообще...</a></td>
-                    <td>photo.jpg</td>
-                    <td>
-                        <a href="<?php echo HOST . "admin/"; ?>category-delete?id=<?= $cat['id'] ?>" class="icon-delete"></a>
-                    </td>
-                </tr>
+                <?php endforeach; ?>
             </tbody>
         </table>
     </div>

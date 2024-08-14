@@ -6,7 +6,15 @@
         <?php include ROOT . 'admin/templates/components/success.tpl'; ?>
 
         <div class="admin-form__item">
-            <h2 class="heading">Сообщение №1</h2>
+            <h2 class="heading">Сообщение <?= $message['id'] ?></h2>
+        </div>
+
+
+        <div class="admin-form__item">
+            <label class="input__label mb-10">
+                Время отправления
+            </label>
+            <p><?php echo rus_date("j.m.Y H:i", $message['time']); ?></p>
         </div>
 
 
@@ -14,21 +22,21 @@
             <label class="input__label mb-10">
                 Имя отправителя
             </label>
-            <p> Юрий</p>
+            <p><?= $message['name'] ?></p>
         </div>
 
         <div class="admin-form__item">
             <label class="input__label mb-10">
                 Email отправителя
             </label>
-            <p>info@mail.com</p>
+            <p><?= $message['email'] ?></p>
         </div>
 
         <div class="admin-form__item">
             <label class="input__label mb-10">
                 Текст сообщения
             </label>
-            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Iure, vero! Atque qui vel eaque ex hic excepturi dolor, autem nam veritatis aliquam dicta non architecto placeat numquam alias, saepe earum!</p>
+            <?= $message['message'] ?>
         </div>
 
         <div class="admin-form__item">
@@ -37,9 +45,6 @@
             </label>
             <p>photo.jpg</p>
         </div>
-
-
-
 
         <div class="admin-form__item buttons justify-content-between">
             <a class="secondary-button" href="<?= HOST ?>admin/messages">Вернуться назад</a>
