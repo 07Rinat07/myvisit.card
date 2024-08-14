@@ -43,12 +43,16 @@
             <label class="input__label mb-10">
                 Прикреплённый файл
             </label>
-            <p>photo.jpg</p>
+            <p>
+                <a href="<?= HOST ?>usercontent/contact-form/<?= $message['file_name_src'] ?>">
+                    <?= $message['file_name_original'] ?>
+                </a>
+            </p>
         </div>
 
         <div class="admin-form__item buttons justify-content-between">
             <a class="secondary-button" href="<?= HOST ?>admin/messages">Вернуться назад</a>
-            <button name="submit" class="primary-button primary-button--red" type="submit">Удалить</button>
+            <a href="<?php echo HOST . "admin/"; ?>messages?action=delete&id=<?= $message['id'] ?>" class="primary-button primary-button--red">Удалить</a>
         </div>
         <div class="admin-form__item"></div>
         <div class="admin-form__item"></div>

@@ -32,9 +32,9 @@
                         <td><?= $message['email'] ?></td>
                         <td><a href="<?= HOST ?>admin/message?id=<?= $message['id'] ?>"><?= $message['message'] ?></a></td>
                         <td><?php echo rus_date("j.m.Y H:i", $message['time']); ?></td>
-                        <td>photo.jpg</td>
+                        <td><?= $message['file_name_original'] ?></td>
                         <td>
-                            <a href="<?php echo HOST . "admin/"; ?>category-delete?id=<?= $cat['id'] ?>" class="icon-delete"></a>
+                            <a href="<?php echo HOST . "admin/"; ?>messages?action=delete&id=<?= $message['id'] ?>" class="icon-delete"></a>
                         </td>
                     </tr>
                 <?php endforeach; ?>
