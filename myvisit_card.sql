@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Авг 12 2024 г., 07:17
+-- Время создания: Авг 14 2024 г., 07:45
 -- Версия сервера: 8.0.30
 -- Версия PHP: 7.4.30
 
@@ -72,25 +72,23 @@ INSERT INTO `comments` (`id`, `text`, `post`, `user`, `timestamp`) VALUES
 -- --------------------------------------------------------
 
 --
--- Структура таблицы `contacts`
+-- Структура таблицы `messages`
 --
 
-CREATE TABLE `contacts` (
-  `id` int NOT NULL,
-  `about_title` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `about_text` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
-  `services_title` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `services_text` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
-  `contacts_title` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `contacts_text` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+CREATE TABLE `messages` (
+  `id` int UNSIGNED NOT NULL,
+  `name` varchar(191) COLLATE utf8mb4_unicode_520_ci DEFAULT NULL,
+  `email` varchar(191) COLLATE utf8mb4_unicode_520_ci DEFAULT NULL,
+  `message` varchar(191) COLLATE utf8mb4_unicode_520_ci DEFAULT NULL,
+  `time` int UNSIGNED DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
 
 --
--- Дамп данных таблицы `contacts`
+-- Дамп данных таблицы `messages`
 --
 
-INSERT INTO `contacts` (`id`, `about_title`, `about_text`, `services_title`, `services_text`, `contacts_title`, `contacts_text`) VALUES
-(1, 'ОБО МНЕ', '<p>Занимаюсь разработкой современных сайтов и приложений. Мне нравится делать интересные и современные проекты. Этот сайт я сделал в рамках обучения в школе онлайн обучения WebCademy. Чуть позже я обновлю в нём свой контент. А пока посмотрите, как тут всё классно!</p>\r\n', 'НАПРАВЛЕНИЯ, КОТОРЫМИ Я ЗАНИМАЮСЬ', '<ul>\r\n	<li>Верстка сайтов</li>\r\n	<li>Frontend</li>\r\n	<li>UI/UX дизайн</li>\r\n</ul>\r\n', 'Контакты', '<p><strong>Email:</strong>&nbsp;<a href=\"mailto:hi@digitalnomad.pro\">hi@digitalnomad.pro</a></p>\r\n\r\n<p><strong>Мобильный:</strong>&nbsp;<a href=\"tel:+79055557788\">+7 (905) 555-77-88</a></p>\r\n\r\n<p><strong>Адрес:</strong> Москва, Пресненская набережная, д. 6, стр. 2</p>\r\n');
+INSERT INTO `messages` (`id`, `name`, `email`, `message`, `time`) VALUES
+(1, 'Ruslan', 'test7@mail.ru', 'test', 1723607477);
 
 -- --------------------------------------------------------
 
@@ -136,6 +134,31 @@ INSERT INTO `posts` (`id`, `title`, `content`, `cover`, `cover_small`, `timestam
 -- --------------------------------------------------------
 
 --
+-- Структура таблицы `settings`
+--
+
+CREATE TABLE `settings` (
+  `id` int NOT NULL,
+  `section` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `name` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `value` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Дамп данных таблицы `settings`
+--
+
+INSERT INTO `settings` (`id`, `section`, `name`, `value`) VALUES
+(1, 'contacts', 'about_title', 'Обо мне'),
+(2, 'contacts', 'about_text', '<p>Занимаюсь разработкой современных сайтов и приложений. Мне нравится делать интересные и современные проекты. Этот сайт я сделал в рамках обучения в школе онлайн обучения WebCademy. Чуть позже я обновлю в нём свой контент. А пока посмотрите, как тут всё классно!</p>'),
+(3, 'contacts', 'services_title', 'НАПРАВЛЕНИЯ, КОТОРЫМИ Я ЗАНИМАЮСЬ'),
+(4, 'contacts', 'services_text', '<ul>\r\n	<li>Верстка сайтов</li>\r\n	<li>Frontend</li>\r\n	<li>UI/UX дизайн</li>\r\n</ul>'),
+(5, 'contacts', 'contacts_title', 'Контакты'),
+(6, 'contacts', 'contacts_text', '<p><strong>Email:</strong>&nbsp;<a href=\"mailto:hi@digitalnomad.pro\">hi@digitalnomad.pro</a></p>\r\n\r\n<p><strong>Мобильный:</strong>&nbsp;<a href=\"tel:+79055557788\">+7 (905) 555-77-88</a></p>\r\n\r\n<p><strong>Адрес:</strong> Москва, Пресненская набережная, д. 6, стр. 2</p>');
+
+-- --------------------------------------------------------
+
+--
 -- Структура таблицы `users`
 --
 
@@ -166,6 +189,12 @@ INSERT INTO `users` (`id`, `email`, `role`, `password`, `recovery_code`, `name`,
 --
 
 --
+-- Индексы таблицы `messages`
+--
+ALTER TABLE `messages`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Индексы таблицы `users`
 --
 ALTER TABLE `users`
@@ -174,6 +203,12 @@ ALTER TABLE `users`
 --
 -- AUTO_INCREMENT для сохранённых таблиц
 --
+
+--
+-- AUTO_INCREMENT для таблицы `messages`
+--
+ALTER TABLE `messages`
+  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT для таблицы `users`
