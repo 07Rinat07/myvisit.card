@@ -22,7 +22,7 @@
             </thead>
             <tbody>
                 <?php foreach ($messages as $message) : ?>
-                    <tr>
+                    <tr <?php echo $message['status'] === 'new' ? 'class="message-new"' : NULL; ?>>
                         <td><?= $message['id'] ?></td>
                         <td>
                             <a href="<?= HOST ?>admin/message?id=<?= $message['id'] ?>">

@@ -15,6 +15,10 @@ if ( !(isset($_SESSION['role']) && $_SESSION['role'] === 'admin') ) {
     exit();
 }
 
+// Sidebar
+require(ROOT . "admin/modules/sidebar/sidebar.php");
+
+
 /* ..........................................
 
 РОУТЕР // ROUTE - МАРШРУТ
