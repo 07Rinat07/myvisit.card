@@ -10,6 +10,8 @@ $_SESSION['success'] = array();
 
 session_start();
 
+require(ROOT . "modules/settings/settings.php");
+
 /* ..........................................
 
 РОУТЕР // ROUTE - МАРШРУТ

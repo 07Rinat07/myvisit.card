@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Авг 14 2024 г., 07:45
+-- Время создания: Авг 18 2024 г., 06:32
 -- Версия сервера: 8.0.30
 -- Версия PHP: 7.4.30
 
@@ -80,15 +80,19 @@ CREATE TABLE `messages` (
   `name` varchar(191) COLLATE utf8mb4_unicode_520_ci DEFAULT NULL,
   `email` varchar(191) COLLATE utf8mb4_unicode_520_ci DEFAULT NULL,
   `message` varchar(191) COLLATE utf8mb4_unicode_520_ci DEFAULT NULL,
-  `time` int UNSIGNED DEFAULT NULL
+  `time` int UNSIGNED DEFAULT NULL,
+  `status` varchar(191) COLLATE utf8mb4_unicode_520_ci DEFAULT NULL,
+  `file_name_src` tinyint UNSIGNED DEFAULT NULL,
+  `file_name_original` tinyint UNSIGNED DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
 
 --
 -- Дамп данных таблицы `messages`
 --
 
-INSERT INTO `messages` (`id`, `name`, `email`, `message`, `time`) VALUES
-(1, 'Ruslan', 'test7@mail.ru', 'test', 1723607477);
+INSERT INTO `messages` (`id`, `name`, `email`, `message`, `time`, `status`, `file_name_src`, `file_name_original`) VALUES
+(1, 'Ruslan', 'test7@mail.ru', 'test', 1723607477, NULL, NULL, NULL),
+(2, 'Rinat S', 'testagain@mail.ru', 'simple test', 1723695073, 'new', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -154,7 +158,27 @@ INSERT INTO `settings` (`id`, `section`, `name`, `value`) VALUES
 (3, 'contacts', 'services_title', 'НАПРАВЛЕНИЯ, КОТОРЫМИ Я ЗАНИМАЮСЬ'),
 (4, 'contacts', 'services_text', '<ul>\r\n	<li>Верстка сайтов</li>\r\n	<li>Frontend</li>\r\n	<li>UI/UX дизайн</li>\r\n</ul>'),
 (5, 'contacts', 'contacts_title', 'Контакты'),
-(6, 'contacts', 'contacts_text', '<p><strong>Email:</strong>&nbsp;<a href=\"mailto:hi@digitalnomad.pro\">hi@digitalnomad.pro</a></p>\r\n\r\n<p><strong>Мобильный:</strong>&nbsp;<a href=\"tel:+79055557788\">+7 (905) 555-77-88</a></p>\r\n\r\n<p><strong>Адрес:</strong> Москва, Пресненская набережная, д. 6, стр. 2</p>');
+(6, 'contacts', 'contacts_text', '<p><strong>Email:</strong>&nbsp;<a href=\"mailto:hi@digitalnomad.pro\">hi@digitalnomad.pro</a></p>\r\n\r\n<p><strong>Мобильный:</strong>&nbsp;<a href=\"tel:+79055557788\">+7 (905) 555-77-88</a></p>\r\n\r\n<p><strong>Адрес:</strong> Москва, Пресненская набережная, д. 6, стр. 2</p>'),
+(1, 'contacts', 'about_title', 'Обо мне'),
+(2, 'contacts', 'about_text', '<p>Занимаюсь разработкой современных сайтов и приложений. Мне нравится делать интересные и современные проекты. </p>'),
+(3, 'contacts', 'services_title', 'НАПРАВЛЕНИЯ, КОТОРЫМИ Я ЗАНИМАЮСЬ'),
+(4, 'contacts', 'services_text', '<ul>\r\n	<li>Верстка сайтов</li>\r\n	<li>Frontend</li>\r\n	<li>UI/UX дизайн</li>\r\n</ul>'),
+(5, 'contacts', 'contacts_title', 'Контакты'),
+(6, 'contacts', 'contacts_text', '<p><strong>Email:</strong>&nbsp;<a href=\"mailto:hi@digitalnomad.pro\">hi@digitalnomad.pro</a></p>\r\n\r\n<p><strong>Мобильный:</strong>&nbsp;<a href=\"tel:+79055557788\">+7 (905) 555-77-88</a></p>\r\n\r\n<p><strong>Адрес:</strong> Москва, Пресненская набережная, д. 6, стр. 2</p>'),
+(7, 'settings', 'site_title', 'Digital Freelancer'),
+(8, 'settings', 'site_slogan', 'CАЙТ IT СПЕЦИАЛИСТА'),
+(9, 'settings', 'copyright_name', '© Rinat developer'),
+(10, 'settings', 'copyright_year', 'Создано в 2024 году.'),
+(11, 'settings', 'status_on', 'on'),
+(12, 'settings', 'status_label', 'Свободен'),
+(13, 'settings', 'status_text', 'Рассматриваю предложения по разработке сайтов на PHP. Подробности'),
+(14, 'settings', 'status_link', 'http://project-prepare/contacts'),
+(15, 'settings', 'youtube', ''),
+(16, 'settings', 'instagram', 'instagram'),
+(17, 'settings', 'facebook', 'facebook'),
+(18, 'settings', 'vkontakte', '#'),
+(19, 'settings', 'linkedin', ''),
+(20, 'settings', 'github', 'github');
 
 -- --------------------------------------------------------
 
@@ -208,7 +232,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT для таблицы `messages`
 --
 ALTER TABLE `messages`
-  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT для таблицы `users`

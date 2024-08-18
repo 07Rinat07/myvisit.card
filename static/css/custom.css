@@ -223,4 +223,5 @@ a.logo-link:hover {
     left: 0;
     right: 0;
     height: 54px;
+    z-index: 99;
 }
