@@ -11,10 +11,9 @@
         </a>
         <nav class="nav">
             <ul class="nav__list">
-                <li class="nav__list-item"><a class="nav__list-item-link" href="about">Обо мне</a></li>
-                <li class="nav__list-item"><a class="nav__list-item-link" href="portfolio">Портфолио</a></li>
+                <li class="nav__list-item"><a class="nav__list-item-link" href="<?=HOST?>">Главная</a></li>
                 <li class="nav__list-item"><a class="nav__list-item-link" href="<?=HOST?>blog">Блог</a></li>
-                <li class="nav__list-item"><a class="nav__list-item-link" href="contacts">Контакты</a></li>
+                <li class="nav__list-item"><a class="nav__list-item-link" href="<?=HOST?>contacts">Контакты</a></li>
             </ul>
         </nav>
     </div>
