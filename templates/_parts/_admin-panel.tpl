@@ -16,17 +16,27 @@
             </a>
 
             <?php if ($_SESSION['role'] === 'admin') : ?>
-                <a class="admin-panel__link" href="#">
-                    <div class="admin-panel__message" data-number="8"><img src="<?= HOST ?>static/img/admin-panel/mail.svg" alt=" Сообщение"></div>
-                    <div class="span">Сообщение</div>
+                <a class="admin-panel__link" href="<?= HOST ?>admin/messages">
+                    <div class="admin-panel__message">
+                        <img src="<?= HOST ?>static/img/admin-panel/mail.svg" alt=" Сообщение">
+
+                        <?php if($messagesNewCounter > 0): ?>
+                            <span class="admin-panel__message-icon">
+                                <?=$messagesNewCounter?>
+                            </span>
+                        <?php endif; ?>
+
+                    </div>
+                    <div class="span">Сообщения</div>
                 </a>
-                <a class="admin-panel__link" href="#">
-                    <div class="admin-panel__comments" data-number="15"><img src="<?= HOST ?>static/img/admin-panel/message-square.svg" alt="Комментарии"></div>
-                    <div class="span">Комментарии</div>
-                </a>
-                <a class="admin-panel__link" href="#"><img src="<?= HOST ?>static/img/admin-panel/edit-3.svg" alt="Редактировать эту страницу">
+
+                <?php if( $uriModule === 'blog' && isset($uriGet) && $uriGet !== 'cat' ): ?>
+                <a class="admin-panel__link" href="<?php echo HOST . 'admin/post-edit?id=' . $uriGet; ?>">
+                    <img src="<?= HOST ?>static/img/admin-panel/edit-3.svg" alt="Редактировать эту страницу">
                     <div class="span">Редактировать</div>
                 </a>
+                <?php endif; ?>
+
             <?php endif; ?>
         </div>
 
