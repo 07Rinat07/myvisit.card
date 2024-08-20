@@ -175,13 +175,6 @@ a.control-panel__title-wrapper {
     background-color: #edffd0;
 }
 
-/*
-input[type="checkbox"].input {
-    width: auto;
-    display: block;
-}
-*/
-
 a.logo-link {
     text-decoration: none;
     display: block;
