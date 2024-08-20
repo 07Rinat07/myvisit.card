@@ -70,7 +70,26 @@ switch ($uriModule) {
         require ROOT . "admin/modules/categories/delete.php";
         break;
 
-        // ::::::::::::::::::: OTHERS :::::::::::::::::::
+
+    // ::::::::::::::::::: SHOP :::::::::::::::::::
+
+    case 'shop':
+        require ROOT . "admin/modules/shop/all.php";
+        break;
+
+    case 'shop-new':
+        require ROOT . "admin/modules/shop/new.php";
+        break;
+
+    case 'shop-edit':
+        require ROOT . "admin/modules/shop/edit.php";
+        break;
+
+    case 'shop-delete':
+        require ROOT . "admin/modules/shop/delete.php";
+        break;
+
+    // ::::::::::::::::::: OTHERS :::::::::::::::::::
 
     case 'contacts':
         require ROOT . "admin/modules/contacts/edit.php";
