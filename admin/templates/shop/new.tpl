@@ -2,7 +2,7 @@
 
 <div class="admin-page__content-form">
 
-    <form enctype="multipart/form-data" class="admin-form" method="POST" action="<?= HOST ?>admin/post-new">
+    <form enctype="multipart/form-data" class="admin-form" method="POST" action="<?= HOST ?>admin/shop-new">
 
         <?php include ROOT . 'admin/templates/components/errors.tpl'; ?>
         <?php include ROOT . 'admin/templates/components/success.tpl'; ?>
@@ -48,7 +48,7 @@
 
         </div>
         <div class="admin-form__item buttons">
-            <button name="postSubmit" class="primary-button" type="submit">Опубликовать</button>
+            <button name="submit" class="primary-button" type="submit">Опубликовать</button>
             <a class="secondary-button" href="<?= HOST ?>admin/blog">Отмена</a>
         </div>
         <div class="admin-form__item"></div>
