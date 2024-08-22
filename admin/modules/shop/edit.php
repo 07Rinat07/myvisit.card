@@ -1,73 +1,81 @@
 <?php
-/*
-$cats = R::find('categories', 'ORDER BY title ASC');
 
-if (isset($_POST['postEdit'])) {
+
+if (isset($_POST['submit'])) {
 
     // Проверка на заполненность - Заголовок
     if (trim($_POST['title']) == '') {
-        $_SESSION['errors'][] = ['title' => 'Введите заголовок поста'];
+        $_SESSION['errors'][] = ['title' => 'Введите заголовок'];
+    }
+
+    // Проверка на заполненность - Заголовок
+    if (trim($_POST['price']) == '') {
+        $_SESSION['errors'][] = ['title' => 'Введите цену'];
     }
 
     // Проверка на заполненность - Содержимое
     if (trim($_POST['content']) == '') {
-        $_SESSION['errors'][] = ['title' => 'Заполните содержимое поста'];
+        $_SESSION['errors'][] = ['title' => 'Заполните описание'];
     }
 
     if (empty($_SESSION['errors'])) {
 
-        $post = R::load('posts', $_GET['id']);
-        $post->title = $_POST['title'];
-        $post->cat = $_POST['cat'];
-        $post->content = $_POST['content'];
-        $post->editTime = time();
+        $product = R::load('products', $_GET['id']);
+        $product->title = $_POST['title'];
+        $product->price = $_POST['price'];
+        $product->content = $_POST['content'];
+        $product->editTime = time();
 
         // Удаление обложки
         if (isset($_POST['delete-cover']) && $_POST['delete-cover'] == 'on') {
 
             // Удалить файлы обложки
-            $coverFolderLocation = ROOT . 'usercontent/blog/';
+            $coverFolderLocation = ROOT . 'usercontent/products/';
 
-            if (file_exists(ROOT . 'usercontent/blog/' . $post->cover) && !empty($user->cover)) {
-                unlink(ROOT . 'usercontent/blog/' . $post->cover);
-            }
-            if (file_exists(ROOT . 'usercontent/blog/' . $post->coverSmall) && !empty($user->coverSmall)) {
-                unlink(ROOT . 'usercontent/blog/' . $post->coverSmall);
+            // Удалить файл с диска
+            if (file_exists(ROOT . 'usercontent/products/' . $product->cover) && !empty($product->cover)) {
+                unlink(ROOT . 'usercontent/products/' . $product->cover);
             }
 
-            // Удалить записи в БД
-            $post->cover = NULL;
-            $post->cover_small = NULL;
+            // Удалить файл с диска
+            if (file_exists(ROOT . 'usercontent/products/' . $product->coverSmall) && !empty($product->cover)) {
+                unlink(ROOT . 'usercontent/products/' . $product->coverSmall);
+            }
+
+            // Удалить запись в БД
+            $product->cover = NULL;
+            $product->cover_small = NULL;
+
         }
 
         // Если передано изображение - уменьшаем, сохраняем, записываем в БД
         if (isset($_FILES['cover']['name']) && $_FILES['cover']['tmp_name'] !== '') {
             // Обрабатываем картинку, сохраняем, и получаем имя файла
-            $coverFileName = saveUploadedImg('cover', [600, 300], 12, 'blog', [1110, 460], [290, 230]);
+            $coverFileName = saveUploadedImg('cover', [600, 300], 12, 'products', [540, 380], [290, 230]);
 
             // Если новое изображение успешно загружено тогда удаляем старое
             if ($coverFileName) {
                 // Удаляем старое изображение
-                if (file_exists(ROOT . 'usercontent/blog/' . $post->cover) && !empty($user->cover)) {
-                    unlink(ROOT . 'usercontent/blog/' . $post->cover);
+                if (file_exists(ROOT . 'usercontent/products/' . $product->cover) && !empty($product->cover)) {
+                    unlink(ROOT . 'usercontent/products/' . $product->cover);
                 }
-                if (file_exists(ROOT . 'usercontent/blog/' . $post->coverSmall) && !empty($user->coverSmall)) {
-                    unlink(ROOT . 'usercontent/blog/' . $post->coverSmall);
+                if (file_exists(ROOT . 'usercontent/products/' . $product->coverSmall)&& !empty($product->cover)) {
+                    unlink(ROOT . 'usercontent/products/' . $product->coverSmall);
                 }
             }
 
             // Сохраняем имя файла в БД
-            $post->cover = $coverFileName[0];
-            $post->coverSmall = $coverFileName[1];
+            $product->cover = $coverFileName[0];
+            $product->coverSmall = $coverFileName[1];
         }
 
-        R::store($post);
-        $_SESSION['success'][] = ['title' => 'Пост успешно обновлен'];
+        R::store($product);
+        $_SESSION['success'][] = ['title' => 'Продукт успешно обновлен'];
     }
 }
 
-$post = R::load('posts', $_GET['id']);
-*/
+$product = R::load('products', $_GET['id']);
+
 
 // Центральный шаблон для модуля
 ob_start();

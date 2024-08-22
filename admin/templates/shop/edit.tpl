@@ -2,32 +2,32 @@
 
 <div class="admin-page__content-form">
 
-    <form enctype="multipart/form-data" class="admin-form" method="POST" action="<?= HOST ?>admin/post-new">
+    <form enctype="multipart/form-data" class="admin-form" method="POST" action="<?= HOST ?>admin/shop-edit?id=<?= $product['id'] ?>">
 
         <?php include ROOT . 'admin/templates/components/errors.tpl'; ?>
         <?php include ROOT . 'admin/templates/components/success.tpl'; ?>
 
-        <div class="admin-form__item">
+        <div class=" admin-form__item">
             <h2 class="heading">Редактировать товар</h2>
         </div>
 
         <div class="admin-form__item">
             <label class="input__label">
                 Введите название товара
-                <input name="title" class="input input--width-label" type="text" />
+                <input name="title" class="input input--width-label" type="text" value="<?= $product['title'] ?>" />
             </label>
         </div>
 
         <div class="admin-form__item">
             <label class="input__label">
                 Цена товара
-                <input name="price" class="input input--width-label" type="text" />
+                <input name="price" class="input input--width-label" type="text" value="<?= $product['price'] ?>" />
             </label>
         </div>
 
         <div class="admin-form__item">
             <label class="textarea__label mb-15" for="editor">Описание товара</label>
-            <textarea name="content" class="textarea textarea--width-label" id="editor"></textarea>
+            <textarea name="content" class="textarea textarea--width-label" id="editor"><?= $product['content'] ?></textarea>
 
         </div>
         <div class="admin-form__item">
@@ -39,11 +39,22 @@
                         <input name="cover" class="file-button" type="file">
                     </div>
                 </div>
+
+                <?php if (!empty($product->cover)) :  ?>
+                    <div class="block-upload__img mb-10">
+                        <img src="<?= HOST ?>usercontent/products/<?= $product['cover_small'] ?>" alt="Загрузка картинки" />
+                    </div>
+
+                    <label class="checkbox__item">
+                        <input class="checkbox__btn" type="checkbox" name="delete-cover"><span class="checkbox__label">Удалить обложку</span>
+                    </label>
+                <?php endif; ?>
+
             </div>
 
         </div>
         <div class="admin-form__item buttons">
-            <button name="postSubmit" class="primary-button" type="submit">Опубликовать</button>
+            <button name="submit" class="primary-button" type="submit">Сохранить изменения</button>
             <a class="secondary-button" href="<?= HOST ?>admin/blog">Отмена</a>
         </div>
         <div class="admin-form__item"></div>

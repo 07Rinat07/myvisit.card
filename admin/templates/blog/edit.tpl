@@ -2,7 +2,10 @@
 
 <div class="admin-page__content-form">
 
-    <form enctype="multipart/form-data" class="admin-form" method="POST" action="<?= HOST ?>admin/post-edit?id=<?= $post['id'] ?>">
+    <form
+        enctype="multipart/form-data" class="admin-form" method="POST"
+        action="<?= HOST ?>admin/post-edit?id=<?= $post['id'] ?>"
+    >
 
         <?php include ROOT . 'admin/templates/components/errors.tpl'; ?>
         <?php include ROOT . 'admin/templates/components/success.tpl'; ?>

@@ -18,15 +18,19 @@
                 </tr>
             </thead>
             <tbody>
-                <?php /* foreach ($posts as $post) : ?>
+                <?php foreach ($products as $product) : ?>
                     <tr>
-                        <td><?= $post['id'] ?></td>
-                        <td><a href="<?php echo HOST . "admin/"; ?>post-edit?id=<?= $post['id'] ?>"><?= $post['title'] ?></a></td>
+                        <td><?= $product['id'] ?></td>
                         <td>
-                            <a href="<?php echo HOST . "admin/"; ?>post-delete?id=<?= $post['id'] ?>" class="icon-delete"></a>
+                            <a href="<?php echo HOST . "admin/"; ?>shop-edit?id=<?= $product['id'] ?>">
+                                <?= $product['title'] ?>
+                            </a>
+                        </td>
+                        <td>
+                            <a href="<?php echo HOST . "admin/"; ?>shop-delete?id=<?= $product['id'] ?>" class="icon-delete"></a>
                         </td>
                     </tr>
-                <?php endforeach; */ ?>
+                <?php endforeach; ?>
             </tbody>
         </table>
     </div>
