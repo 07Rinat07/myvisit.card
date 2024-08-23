@@ -51,7 +51,7 @@ if (isset($_POST['submit'])) {
         // Если передано изображение - уменьшаем, сохраняем, записываем в БД
         if (isset($_FILES['cover']['name']) && $_FILES['cover']['tmp_name'] !== '') {
             // Обрабатываем картинку, сохраняем, и получаем имя файла
-            $coverFileName = saveUploadedImg('cover', [600, 300], 12, 'products', [540, 380], [290, 230]);
+            $coverFileName = saveUploadedImgNoCrop('cover', [600, 300], 12, 'products', [540, 380], [290, 230]);
 
             // Если новое изображение успешно загружено тогда удаляем старое
             if ($coverFileName) {
