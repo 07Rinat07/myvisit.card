@@ -13,6 +13,7 @@
             <ul class="nav__list">
                 <li class="nav__list-item"><a class="nav__list-item-link" href="<?=HOST?>">Главная</a></li>
                 <li class="nav__list-item"><a class="nav__list-item-link" href="<?=HOST?>blog">Блог</a></li>
+                <li class="nav__list-item"><a class="nav__list-item-link" href="<?=HOST?>shop">Магазин</a></li>
                 <li class="nav__list-item"><a class="nav__list-item-link" href="<?=HOST?>contacts">Контакты</a></li>
             </ul>
         </nav>

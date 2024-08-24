@@ -29,7 +29,7 @@ switch ($uriModule) {
         require(ROOT . "modules/main/index.php");
         break;
 
-        // ::::::::::::::::::: USERS :::::::::::::::::::
+    // ::::::::::::::::::: USERS :::::::::::::::::::
 
     case 'login':
         require ROOT . "modules/login/login.php";
@@ -66,6 +66,8 @@ switch ($uriModule) {
         require ROOT . "modules/about/index.php";
         break;
 
+    // ::::::::::::::::::: BLOG :::::::::::::::::::
+
     case 'blog':
         // require ROOT . "modules/blog/index.php";
 
@@ -83,6 +85,19 @@ switch ($uriModule) {
         require ROOT . "modules/blog/add-comment.php";
         break;
 
+    // ::::::::::::::::::: SHOP :::::::::::::::::::
+
+    case 'shop':
+
+        if (isset($uriGet)) {
+            require ROOT . "modules/shop/product.php";
+        } else {
+            require ROOT . "modules/shop/catalog.php";
+        }
+
+        break;
+
+    // ::::::::::::::::::: OTHER :::::::::::::::::::
 
     case 'contacts':
         require ROOT . "modules/contacts/index.php";
