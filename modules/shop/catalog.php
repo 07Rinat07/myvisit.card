@@ -1,13 +1,8 @@
 <?php
 
 $pageTitle = "Каталог товаров";
-
-/*
-$pagination = pagination(6, 'posts');
-
-// Выводим все посты
-$posts = R::find('posts', 'ORDER BY id DESC ' . $pagination['sql_pages_limit']);
-*/
+$pagination = pagination(6, 'products');
+$products = R::find('products', 'ORDER BY id DESC ' . $pagination['sql_pages_limit']);
 
 // Шаблоны
 include ROOT . 'templates/_page-parts/_head.tpl';
