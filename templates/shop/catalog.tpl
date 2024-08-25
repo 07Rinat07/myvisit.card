@@ -6,11 +6,12 @@
             </div>
             <div class="shop-cards">
                 <?php
-                    foreach ($products as $product){
-                        include ROOT . "templates/shop/parts/_card.tpl";
-                    }
+                foreach ($products as $product) {
+                    include ROOT . "templates/shop/parts/_card.tpl";
+                }
                 ?>
             </div>
+            <?php include ROOT . "templates/_parts/pagination/_pagination.tpl" ?>
         </section>
     </div>
 </main>
