@@ -11,7 +11,7 @@ $pageTitle = $product->title;
 // $comments = R::getAll($sqlQueryComments, [$post['id']]);
 
 // Вывод похожих постов
-// $relatedPosts = get_related_posts($post['title']);
+$relatedProducts = get_related($product['title'], 'products');
 
 // Центральный шаблон для модуля
 include ROOT . 'templates/_page-parts/_head.tpl';

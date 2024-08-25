@@ -390,9 +390,8 @@ function saveUploadedFile($inputFileName, $maxFileSizeMb, $folderName)
 }
 
 // Вывод похожих постов posts
-function get_related_posts($postTitle)
+function get_related($postTitle, $tableName)
 {
-
 
     $wordsArray = explode(' ', $postTitle);
     $wordsArray = array_unique($wordsArray);
@@ -437,7 +436,11 @@ function get_related_posts($postTitle)
     // SQL запрос который нужно сформировать
     // $relatedPosts = R::getAll('SELECT * FROM `posts` WHERE title LIKE ? OR title LIKE ?', ['%Москва%', '%Ford%']);
 
-    $sqlQuery = 'SELECT id, title, cover_small FROM `posts` WHERE ';
+    if ($tableName === 'posts'){
+        $sqlQuery = 'SELECT id, title, cover_small FROM `' . $tableName . '` WHERE ';
+    } else if($tableName === 'products') {
+        $sqlQuery = 'SELECT id, title, price, cover_small FROM `' . $tableName . '` WHERE ';
+    }
 
     for ($i = 0; $i < count($newWordsArray); $i++) {
         if ($i + 1 == count($newWordsArray)) {
