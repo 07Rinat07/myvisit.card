@@ -2,17 +2,18 @@
 	<div class="container">
 		<section class="page-product">
 			<div class="page-product__col">
-				<div class="page-product__img"><img src="<?= HOST; ?>static/img/product-big.jpg" alt="air-13" /></div>
+				<div class="page-product__img">
+					<img src="<?= HOST; ?>usercontent/products/<?= $product->cover; ?>" alt="<?= $product->title; ?>" />
+				</div>
 			</div>
 			<div class="page-product__col">
 				<div class="page-product__title">
-					<h2 class="section-title">Apple MacBook Air 13</h2>
+					<h2 class="section-title"><?= $product->title; ?></h2>
 				</div>
-				<div class="page-product__price">190 000 руб.</div><a class="page-product__button primary-button" href="page-shopping-card.html">В корзину</a>
+				<div class="page-product__price"><?= $product->price; ?> руб.</div>
+				<a class="page-product__button primary-button" href="page-shopping-card.html">В корзину</a>
 				<div class="page-product-text">
-					<p>Новый MacBook Air — ещё более тонкий и лёгкий, оснащён дисплеем Retina, клавиатурой нового поколения, трекпадом Force Touch и технологией Touch ID, которая защищает ваши данные и открывает доступ к ним только вам.</p>
-					<p>Это самый экологичный Mac. Для его корпуса используется только переработанный алюминий.1 И это невероятно удобный MacBook Air, который справится с любыми задачами.</p>
-					<p><a href="!#">Подробнее об особенностях и преимуществах MacBook Air.</a></p>
+					<?= $product->content; ?>
 				</div>
 			</div>
 		</section>
