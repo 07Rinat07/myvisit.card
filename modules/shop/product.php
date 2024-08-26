@@ -3,8 +3,8 @@
 $product = R::load('products', $uriGet);
 $pageTitle = $product->title;
 
-// Вывод похожих постов
-$relatedProducts = get_related($product['title'], 'products');
+// Вывод похожих товаров
+$relatedProducts = get_related($product['title'], 'products', $product->id);
 
 // Центральный шаблон для модуля
 include ROOT . 'templates/_page-parts/_head.tpl';

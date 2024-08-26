@@ -33,7 +33,7 @@ $sqlQueryComments = 'SELECT comments.text, comments.user, comments.timestamp,
 $comments = R::getAll($sqlQueryComments, [$post['id']]);
 
 // Вывод похожих постов
-$relatedPosts = get_related($post['title'], 'posts');
+$relatedPosts = get_related($post['title'], 'posts', $post['id']);
 
 // Центральный шаблон для модуля
 ob_start();

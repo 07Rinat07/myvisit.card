@@ -18,7 +18,12 @@
 			</div>
 		</section>
 
-		<?php include ROOT . "templates/shop/parts/_related.tpl"; ?>
+		<?php
+			if (count($relatedProducts) > 0) {
+				include ROOT . "templates/shop/parts/_related.tpl";
+			}
+		?>
+
 
 	</div>
 </main>

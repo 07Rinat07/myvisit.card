@@ -390,7 +390,7 @@ function saveUploadedFile($inputFileName, $maxFileSizeMb, $folderName)
 }
 
 // Вывод похожих постов posts
-function get_related($postTitle, $tableName)
+function get_related($postTitle, $tableName, $currentID)
 {
 
     $wordsArray = explode(' ', $postTitle);
@@ -442,6 +442,8 @@ function get_related($postTitle, $tableName)
         $sqlQuery = 'SELECT id, title, price, cover_small FROM `' . $tableName . '` WHERE ';
     }
 
+    $sqlQuery .= ' (id NOT LIKE '. $currentID.') AND (';
+
     for ($i = 0; $i < count($newWordsArray); $i++) {
         if ($i + 1 == count($newWordsArray)) {
             // Последний цикл
@@ -451,7 +453,7 @@ function get_related($postTitle, $tableName)
         }
     }
 
-    $sqlQuery .= ' order by RAND() LIMIT 3';
+    $sqlQuery .= ') order by RAND() LIMIT 3';
 
     return R::getAll($sqlQuery, $newWordsArray);
 }

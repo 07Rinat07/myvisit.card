@@ -30,6 +30,11 @@
 
 	<?php include ROOT . "templates/blog/parts/comments.tpl"; ?>
 	<?php include ROOT . "templates/blog/parts/comments-form.tpl"; ?>
-	<?php include ROOT . "templates/blog/parts/related-posts.tpl"; ?>
+
+	<?php
+		if (count($relatedPosts) > 0) {
+			include ROOT . "templates/blog/parts/related-posts.tpl";
+		}
+	?>
 
 </main>
