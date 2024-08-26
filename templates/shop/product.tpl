@@ -20,7 +20,5 @@
 
 		<?php include ROOT . "templates/shop/parts/_related.tpl"; ?>
 
-
-
 	</div>
 </main>

@@ -3,13 +3,6 @@
 $product = R::load('products', $uriGet);
 $pageTitle = $product->title;
 
-// Комментарии
-// $sqlQueryComments = 'SELECT comments.text, comments.user, comments.timestamp,
-//                             users.name, users.surname, users.avatar_small
-//                         FROM `comments` LEFT JOIN `users` ON comments.user = users.id
-//                         WHERE comments.post = ?';
-// $comments = R::getAll($sqlQueryComments, [$post['id']]);
-
 // Вывод похожих постов
 $relatedProducts = get_related($product['title'], 'products');
 
