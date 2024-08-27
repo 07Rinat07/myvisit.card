@@ -97,6 +97,13 @@ switch ($uriModule) {
 
         break;
 
+    // ::::::::::::::::::: CART :::::::::::::::::::
+
+    case 'cart':
+        require ROOT . "modules/cart/cart.php";
+        break;
+
+
     // ::::::::::::::::::: OTHER :::::::::::::::::::
 
     case 'contacts':
