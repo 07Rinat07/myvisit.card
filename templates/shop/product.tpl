@@ -11,7 +11,12 @@
 					<h2 class="section-title"><?= $product->title; ?></h2>
 				</div>
 				<div class="page-product__price"><?= $product->price; ?> руб.</div>
-				<a class="page-product__button primary-button" href="page-shopping-card.html">В корзину</a>
+				<a
+					class="page-product__button primary-button"
+					href="<?= HOST ?>addtocart?id=<?= $product->id; ?>"
+					>
+					В корзину
+				</a>
 				<div class="page-product-text">
 					<?= $product->content; ?>
 				</div>
@@ -19,9 +24,9 @@
 		</section>
 
 		<?php
-			if (count($relatedProducts) > 0) {
-				include ROOT . "templates/shop/parts/_related.tpl";
-			}
+		if (count($relatedProducts) > 0) {
+			include ROOT . "templates/shop/parts/_related.tpl";
+		}
 		?>
 
 
