@@ -4,7 +4,7 @@
         <div class="admin-panel__block-list">
 
             <?php if ($_SESSION['role'] === 'admin') : ?>
-                <a class="admin-panel__link" href="<?=HOST?>admin">
+                <a class="admin-panel__link" href="<?= HOST ?>admin">
                     <img src="<?= HOST ?>static/img/admin-panel/target.svg" alt="Перейти в админ панель">
                     <div class="span">Панель управления</div>
                 </a>
@@ -20,9 +20,9 @@
                     <div class="admin-panel__message">
                         <img src="<?= HOST ?>static/img/admin-panel/mail.svg" alt=" Сообщение">
 
-                        <?php if($messagesNewCounter > 0): ?>
+                        <?php if ($messagesNewCounter > 0) : ?>
                             <span class="admin-panel__message-icon">
-                                <?=$messagesNewCounter?>
+                                <?= $messagesNewCounter ?>
                             </span>
                         <?php endif; ?>
 
@@ -30,17 +30,20 @@
                     <div class="span">Сообщения</div>
                 </a>
 
-                <?php if( $uriModule === 'blog' && isset($uriGet) && $uriGet !== 'cat' ): ?>
-                <a class="admin-panel__link" href="<?php echo HOST . 'admin/post-edit?id=' . $uriGet; ?>">
-                    <img src="<?= HOST ?>static/img/admin-panel/edit-3.svg" alt="Редактировать эту страницу">
-                    <div class="span">Редактировать</div>
-                </a>
+                <?php if ($uriModule === 'blog' && isset($uriGet) && $uriGet !== 'cat') : ?>
+                    <a class="admin-panel__link" href="<?php echo HOST . 'admin/post-edit?id=' . $uriGet; ?>">
+                        <img src="<?= HOST ?>static/img/admin-panel/edit-3.svg" alt="Редактировать эту страницу">
+                        <div class="span">Редактировать</div>
+                    </a>
                 <?php endif; ?>
 
             <?php endif; ?>
         </div>
 
-        <a href="<?= HOST ?>logout" class="admin-panel__block-button">Выход</a>
+        <div class="admin-panel__block-list">
+            <a href="<?= HOST ?>cart" class="admin-panel__link">Корзина</a>
+            <a href="<?= HOST ?>logout" class="admin-panel__block-button">Выход</a>
+        </div>
     </div>
 
 <?php else : ?>
