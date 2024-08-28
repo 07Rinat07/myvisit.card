@@ -41,7 +41,7 @@
         </div>
 
         <div class="admin-panel__block-list">
-            <a href="<?= HOST ?>cart" class="admin-panel__link">Корзина</a>
+            <a href="<?= HOST ?>cart" class="admin-panel__link">Корзина (<?= $cartCount;?>)</a>
             <a href="<?= HOST ?>logout" class="admin-panel__block-button">Выход</a>
         </div>
     </div>

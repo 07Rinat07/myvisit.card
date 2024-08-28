@@ -12,6 +12,7 @@ session_start();
 
 require(ROOT . "modules/settings/settings.php");
 require(ROOT . "modules/admin-panel/admin-panel.php");
+require(ROOT . "modules/cart/usercart.php");
 
 /* ..........................................
 

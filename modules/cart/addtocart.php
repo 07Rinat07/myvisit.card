@@ -22,5 +22,8 @@ $user->cart = json_encode($cart);
 // Обновляем пользователя в БД
 R::store($user);
 
+// Обновляем состояние корзины в сессии
+$_SESSION['cart'] = $cart;
+
 header("Location: " . HOST . "shop/" . $_GET['id']);
 exit();
