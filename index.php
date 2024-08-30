@@ -108,6 +108,10 @@ switch ($uriModule) {
         require ROOT . "modules/cart/addtocart.php";
         break;
 
+    case 'removefromcart':
+        require ROOT . "modules/cart/remove.php";
+        break;
+
     // ::::::::::::::::::: OTHER :::::::::::::::::::
 
     case 'contacts':

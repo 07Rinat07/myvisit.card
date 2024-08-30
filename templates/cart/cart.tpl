@@ -2,6 +2,10 @@
     <div class="container">
         <section class="page-shopping-cart">
             <h1 class="page-shopping-cart__main-title">Корзина</h1>
+
+            <?php include ROOT . "templates/components/errors.tpl"; ?>
+            <?php include ROOT . "templates/components/success.tpl"; ?>
+            
             <div class="page-shopping-cart__row-gray">
                 <h2 class="page-shopping-cart__title">наименование</h2>
                 <h2 class="page-shopping-cart__title">количество</h2>
@@ -21,7 +25,7 @@
                     </div>
                     <div class="page-shopping-cart__money"><?= $product['price']; ?> руб.</div>
                     <div class="page-shopping-cart__delete">
-                        <div> <span class="leftright"></span><span class="rightleft"> </span></div>
+                        <a href="<?= HOST; ?>removefromcart?id=<?= $product['id']; ?>"> <span class="leftright"></span><span class="rightleft"> </span></a>
                     </div>
                 </div>
             <?php endforeach; ?>
