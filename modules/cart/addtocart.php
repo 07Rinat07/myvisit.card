@@ -25,5 +25,8 @@ $_SESSION['cart'] = $cart;
 // Обновляем пользователя в БД
 R::store($user);
 
+// Сообщение о добавлении товара
+$_SESSION['success'][] = ['title' => 'Товар был добавлен в корзину'];
+
 header("Location: " . HOST . "shop/" . $_GET['id']);
 exit();
