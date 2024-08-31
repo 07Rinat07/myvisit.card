@@ -41,7 +41,10 @@
         </div>
 
         <div class="admin-panel__block-list">
-            <a href="<?= HOST ?>cart" class="admin-panel__link"> Корзина (<?= $cartCount; ?>)</a>
+            <a href="<?= HOST ?>cart" class="admin-panel__link">
+                Корзина
+                <?php echo !empty($cartCount) ? '(' . $cartCount . ')' : null;   ?>
+            </a>
             <a href="<?= HOST ?>logout" class="admin-panel__block-button">Выход</a>
         </div>
     </div>
@@ -53,7 +56,13 @@
         <div class="admin-panel__block-list">
         </div>
 
-        <a href="<?= HOST ?>login" class="admin-panel__block-button">Вход</a>
+        <div class="admin-panel__block-list">
+            <a href="<?= HOST ?>cart" class="admin-panel__link">
+                Корзина
+                <?php echo !empty($cartCount) ? '(' . $cartCount . ')' : null;   ?>
+            </a>
+            <a href="<?= HOST ?>login" class="admin-panel__block-button">Вход</a>
+        </div>
     </div>
 
 <?php endif; ?>

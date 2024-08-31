@@ -1,26 +1,49 @@
 <?php
 
-// Получаем пользователя из БД
-$user = R::load('users', $_SESSION['logged_user']['id']);
+if (isLoggedIn()) {
 
-// Получаем корзину из БД
-$cart = json_decode($user->cart, true);
+    // Получаем пользователя из БД
+    $user = R::load('users', $_SESSION['logged_user']['id']);
 
-// Удаляем товар из корзины
-unset($cart[$_GET['id']]);
+    // Получаем корзину из БД
+    $cart = json_decode($user->cart, true);
 
-// Превращаем корзину в JSON строку,
-// и записываем ее в поле cart для текущего пользователя
-$user->cart = json_encode($cart);
+    // Удаляем товар из корзины
+    unset($cart[$_GET['id']]);
 
-// Обновляем состояние корзины в сессии
-$_SESSION['cart'] = $cart;
+    // Превращаем корзину в JSON строку,
+    // и записываем ее в поле cart для текущего пользователя
+    $user->cart = json_encode($cart);
 
-// Обновляем пользователя в БД
-R::store($user);
+    // Обновляем состояние корзины в сессии
+    $_SESSION['cart'] = $cart;
 
-// Сообщение о удалении товара
-$_SESSION['success'][] = ['title' => 'Товар был удален из корзины'];
+    // Обновляем пользователя в БД
+    R::store($user);
+
+    // Сообщение о удалении товара
+    $_SESSION['success'][] = ['title' => 'Товар был удален из корзины'];
+}
+
+if(!isLoggedIn()){
+    if (isset($_COOKIE['cart'])) {
+        // Получаем корзину из COOKIE
+        $cart = json_decode($_COOKIE['cart'], true);
+    } else {
+        $cart = array();
+    }
+
+    // 3. Удаляем товар из корзины
+    unset($cart[$_GET['id']]);
+
+    // 4. Сохоранить корзину в COOKIE
+    setcookie("cart", json_encode($cart), time() + 60 * 60 * 24 * 30);
+
+    // 5. Сообщение о удалении товара
+    $_SESSION['success'][] = ['title' => 'Товар был удален'];
+
+}
+
 
 header("Location: " . HOST . "cart");
 exit();

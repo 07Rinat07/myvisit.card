@@ -457,3 +457,13 @@ function get_related($postTitle, $tableName, $currentID)
 
     return R::getAll($sqlQuery, $newWordsArray);
 }
+
+function isLoggedIn(){
+    $result = false;
+
+    if (isset($_SESSION['logged_user'])) {
+        $result = true;
+    }
+
+    return $result;
+}
