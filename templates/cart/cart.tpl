@@ -36,7 +36,10 @@
                 <div class="page-shopping-cart__row-down">
                     <div class="page-shopping-cart__id"><?= $cartCount; ?> единицы</div>
                     <div class="page-shopping-cart__money"><?= $cartTotalPrice; ?> руб.</div>
-                </div><a class="page-shopping-cart__button" href="order-registration.html">Перейти к оформлению заказа</a>
+                </div>
+                <a class="page-shopping-cart__button" href="<?=HOST?>neworder">
+                    Перейти к оформлению заказа
+                </a>
             <?php else : ?>
                 <h1 class="page-shopping-cart__main-title">Корзина пуста</h1>
             <?php endif; ?>
