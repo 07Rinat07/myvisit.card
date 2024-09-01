@@ -3,7 +3,6 @@
 $pageTitle = "Корзина товаров";
 
 // Получаем товары которые соответствую товарам в корзине
-
 if (!empty($cart)) {
     $products = R::findLike('products', ['id' => array_keys($cart)]);
     // R::findLike('products', ['id' => ['5', '9']]);

@@ -16,9 +16,21 @@
 					</thead>
 					<tbody>
 						<tr>
-							<td>Apple MacBook Air 13, Apple watch, Mac Pro</td>
-							<td>3 единицы</td>
-							<td>329 000 руб.</td>
+							<td>
+								<?php
+									$i = 1;
+									foreach ($products as $product) {
+										if ($i !== count($products)) {
+											echo $product['title'] . ', ';
+										} else {
+											echo $product['title'] . '.';
+										}
+										$i++;
+									}
+								?>
+							</td>
+							<td><?=$cartCount;?> шт.</td>
+							<td><?=$cartTotalPrice;?> руб.</td>
 						</tr>
 					</tbody>
 				</table>
