@@ -112,6 +112,16 @@ switch ($uriModule) {
         require ROOT . "modules/cart/remove.php";
         break;
 
+    // ::::::::::::::::::: CART :::::::::::::::::::
+
+    case 'neworder':
+        require ROOT . "modules/orders/new.php";
+        break;
+
+    case 'ordercreated':
+        require ROOT . "modules/orders/created.php";
+        break;
+
     // ::::::::::::::::::: OTHER :::::::::::::::::::
 
     case 'contacts':

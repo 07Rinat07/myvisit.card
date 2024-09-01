@@ -10,6 +10,7 @@
 	<!-- endbuild -->
 	<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap" rel="stylesheet" /><!-- build:css2 css/styles.css -->
 	<link rel="stylesheet" href="./css/main.css" /><!-- endbuild -->
+	<link rel="stylesheet" href="./css/orders.css" /><!-- endbuild -->
 	<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&amp;family=Playfair+Display:wght@400;700&amp;display=swap" rel="stylesheet" />
 </head>
 
@@ -34,65 +35,71 @@
 	<main>
 		<div class="container">
 			<div class="order-registration">
-				<div class="order-registration__title text-center">
+
+				<div class="order-registration__title">
 					<h2 class="section-title">Состав заказа</h2>
 				</div>
-				<div class="order-registration__cart">
-					<div class="order-registration__cart-item">
-						<p>Товары в заказе</p>
-					</div>
-					<div class="order-registration__cart-item">
-						<p>количество</p>
-						<p>стоимость</p>
-					</div>
+
+				<table class="order-table">
+					<thead>
+						<tr>
+							<th>ТОВАРЫ В ЗАКАЗЕ</th>
+							<th>ТОВАРЫ В ЗАКАЗЕ</th>
+							<th>стоимость</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>Apple MacBook Air 13, Apple watch, Mac Pro</td>
+							<td>3 единицы</td>
+							<td>329 000 руб.</td>
+						</tr>
+					</tbody>
+				</table>
+
+				<div class="order-registration__title">
+					<h1 class="section-title">Оформить заказ</h1>
 				</div>
-				<div class="order-registration__product">
-					<div class="order-registration__product-item"><a href="./product.html">Apple MacBook Air 13, Apple watch, Mac Pro</a></div>
-					<div class="order-registration__product-item">
-						<p>3 единицы</p>
-						<p>329 000 руб.</p>
-					</div>
-				</div>
-				<div class="order-registration__title--product text-center">
-					<h2 class="section-title">Оформить заказ</h2>
-				</div>
-				<form class="order-registration__form" name="order-registration" action="./order-placed.html">
-					<div class="order-registration__form-row">
-						<div class="input-form">
-							<label for="form-title">
-								<h3 class="input-title">Имя</h3>
-								<input class="input-text" type="text" placeholder="Введите имя" id="form-title" name="name" />
-							</label>
-						</div>
-						<div class="input-form">
-							<label for="form-title">
-								<h3 class="input-title">Фамилия</h3>
-								<input class="input-text" type="text" placeholder="Введите фамилию" id="form-title" name="name" />
-							</label>
-						</div>
-					</div>
-					<div class="order-registration__form-row">
-						<div class="input-form">
-							<label for="form-title">
-								<h3 class="input-title">Email</h3>
-								<input class="input-text" type="text" placeholder="Введите email" id="form-title" name="email" />
-							</label>
-						</div>
-						<div class="input-form">
-							<label for="form-title">
-								<h3 class="input-title">Телефон</h3>
-								<input class="input-text" type="text" placeholder="Введите телефон" id="form-title" name="phone" />
-							</label>
-						</div>
-					</div>
-					<div class="order-registration__form-row">
-						<label class="textarea__label">Адрес доставки <textarea class="textarea textarea--labeled" name="buyer-adress" placeholder="Введите адрес доставки" title="Адрес доставки"></textarea>
+
+				<form class="order-form" name="order-registration" action="./order-placed.html">
+					<div class="order-form__row">
+						<label>
+							<p class="order-form__name">Имя</p>
+							<input class="input-text" type="text" placeholder="Введите имя" id="form-title" name="name" />
+						</label>
+
+						<label>
+							<p class="order-form__name">Фамилия</p>
+							<input class="input-text" type="text" placeholder="Введите фамилию" id="form-title" name="name" />
 						</label>
 					</div>
-					<div class="order-registration__form-button">
-						<button class="primary-button">Оформить заказ </button><a class="secondary-button" href="./basket.html">Вернуться в корзину </a>
+
+					<div class="order-form__row">
+						<label>
+							<p class="order-form__name">Email</p>
+								<input class="input-text" type="email" placeholder="Введите email" id="form-title" name="email" />
+						</label>
+
+						<label>
+							<p class="order-form__name">Телефон</p>
+								<input class="input-text" type="text" placeholder="Введите фамилию" id="form-title" name="name" />
+						</label>
 					</div>
+
+					<div class="order-form__row">
+						<label>
+							<p class="order-form__name">Адрес доставки</p>
+							<textarea class="textarea" name="buyer-adress" placeholder="Введите адрес доставки" title="Адрес доставки"></textarea>
+						</label>
+					</div>
+
+					<div class="order-form__row order-form__row--justify-between">
+						<button class="primary-button">Оформить заказ </button>
+						<a class="secondary-button" href="./basket.html">Вернуться в корзину </a>
+					</div>
+
 				</form>
+
 			</div>
 		</div>
 	</main>
