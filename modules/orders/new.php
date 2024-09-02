@@ -12,6 +12,11 @@ if (isset($_POST['submit'])) {
     $order->phone = $_POST['phone'];
     $order->address = $_POST['address'];
     $order->cart = json_encode($cart);
+
+    if (isLoggedIn()) {
+        $order->user = $_SESSION['logged_user'];
+    }
+
     R::store($order);
     header("Location: " . HOST . 'ordercreated');
     exit();
