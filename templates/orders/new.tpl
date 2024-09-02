@@ -43,19 +43,38 @@
 					<div class="order-form__row">
 						<label>
 							<p class="order-form__name">Имя</p>
-							<input class="input-text" type="text" placeholder="Введите имя" id="form-title" name="name" />
+
+							<?php
+								$value = null;
+								if ( isset($_SESSION['logged_user']) && !empty($_SESSION['logged_user']['name'])){
+									$value = 'value="' . $_SESSION['logged_user']['name'] . '"';
+								}
+							?>
+							<input class="input-text" type="text" placeholder="Введите имя" id="form-title" name="name" <?=$value;?> />
 						</label>
 
 						<label>
+							<?php
+								$value = null;
+								if ( isset($_SESSION['logged_user']) && !empty($_SESSION['logged_user']['surname'])){
+									$value = 'value="' . $_SESSION['logged_user']['surname'] . '"';
+								}
+							?>
 							<p class="order-form__name">Фамилия</p>
-							<input class="input-text" type="text" placeholder="Введите фамилию" id="form-title" name="secondname" />
+							<input class="input-text" type="text" placeholder="Введите фамилию" id="form-title" name="secondname" <?=$value;?> />
 						</label>
 					</div>
 
 					<div class="order-form__row">
 						<label>
+							<?php
+								$value = null;
+								if ( isset($_SESSION['logged_user']) && !empty($_SESSION['logged_user']['email'])){
+									$value = 'value="' . $_SESSION['logged_user']['email'] . '"';
+								}
+							?>
 							<p class="order-form__name">Email</p>
-								<input class="input-text" type="email" placeholder="Введите email" id="form-title" name="email" />
+							<input class="input-text" type="email" placeholder="Введите email" id="form-title" name="email" <?=$value;?> />
 						</label>
 
 						<label>
