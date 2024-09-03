@@ -40,19 +40,48 @@ if (isset($_POST['login'])) {
                 $_SESSION['role'] = $user->role;
                 $_SESSION['cart'] = json_decode($_SESSION['logged_user']['cart'], true);
 
-                // Есть ли корзина COOKIE
+                // Работа с корзиной: start
+
+                // План действий:
+                // 1. Достать корзину из БД
+                // 2. Совместить ее с COOKIES если они есть
+                // 3. Сохранить полученную корзину в БД
+                // 4. Сохранить полученную корзину в SESSION
+                // 5. Очищаем корзину в COOKIE
+
+                $temp_cart = array();
+
+                if ($user->cart) {
+                    $temp_cart = json_decode($user->cart, true);
+                }
+
+                // Есть ли корзина COOKIE, то переносим ее данные в $temp_cart
                 if (isset($_COOKIE['cart']) && !empty($_COOKIE['cart'])) {
-                    $cartTemp = json_decode($_COOKIE['cart'], true);
-                    foreach ($cartTemp as $key => $value) {
-                        if (isset($_SESSION['cart'][$key])) {
-                            $_SESSION['cart'][$key] += $value;
+                    $cookie_cart = json_decode($_COOKIE['cart'], true);
+
+                    foreach ($cookie_cart as $key => $value) {
+                        if (isset($temp_cart[$key])) {
+                            $temp_cart[$key] += $value;
                         } else {
-                            $_SESSION['cart'][$key] = $value;
+                            $temp_cart[$key] = $value;
                         }
                     }
+
                     // Очищаем корзину в COOKIE
                     setcookie("cart", "", time() - 3600);
                 }
+
+                // Сохраняем корзину в БД - JSON
+                $user->cart = json_encode($temp_cart);
+
+                // Обновляем пользователя в БД
+                R::store($user);
+
+                // ... и в СЕССИЮ - массив
+                $_SESSION['cart'] = $temp_cart;
+
+                // --- Работа с корзиной: end
+
 
                 $_SESSION['success'][] = ['title' => 'Рады снова видеть вас! Вы успешно вошли на сайт'];
 

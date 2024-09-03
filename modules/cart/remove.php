@@ -36,7 +36,7 @@ if(!isLoggedIn()){
     // 3. Удаляем товар из корзины
     unset($cart[$_GET['id']]);
 
-    // 4. Сохоранить корзину в COOKIE
+    // 4. Сохранить корзину в COOKIE
     setcookie("cart", json_encode($cart), time() + 60 * 60 * 24 * 30);
 
     // 5. Сообщение о удалении товара
