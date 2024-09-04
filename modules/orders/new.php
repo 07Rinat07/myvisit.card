@@ -11,11 +11,33 @@ if (isset($_POST['submit'])) {
     $order->email = $_POST['email'];
     $order->phone = $_POST['phone'];
     $order->address = $_POST['address'];
-    $order->cart = json_encode($cart);
 
-    if (isLoggedIn()) {
-        $order->user = $_SESSION['logged_user'];
+    $order->timestamp = time();
+    $order->status = 'new';
+    $order->paid = false;
+
+    if (isLoggedIn()) $order->user = $_SESSION['logged_user'];
+
+    $order_cart = array();
+    $total_price = 0;
+
+    foreach ($cart as $key => $value) {
+        $current_item = array();
+
+        $current_item['id'] = $key;
+        $current_item['amount'] = $value;
+
+        $product = R::load('products', $key);
+        $current_item['title'] = $product['title'];
+        $current_item['price'] = $product['price'];
+
+        $total_price = $total_price + ($product['price'] * $value);
+
+        $order_cart[] = $current_item;
     }
+
+    $order->price = $total_price;
+    $order->cart = $order_cart;
 
     R::store($order);
 
