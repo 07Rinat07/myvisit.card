@@ -20,7 +20,7 @@ if (isset($uriGet)) {
     // ID был передан, находим юзера в БД
     // Загружаем данные юзера из БД по его ID
     $user = R::load('users', $uriGet);
-    
+
     // Загружаем комментари пользователя
     $comments = getUserComments($uriGet);
 
@@ -33,7 +33,10 @@ if (isset($uriGet)) {
         // Пользователь залогинен и показываем его профиль
         $user = R::load('users', $_SESSION['logged_user']['id']);
 
-        // Загружаем комментари пользователя
+        // Заказы пользователя - только свои, для залогиненых
+        $orders = R::findLike('orders', ['user_id' => [$_SESSION['logged_user']['id']]], 'ORDER BY id DESC ');
+
+        // Загружаем комментарии пользователя
         $comments = getUserComments($_SESSION['logged_user']['id']);
 
     } else {

@@ -60,6 +60,9 @@ switch ($uriModule) {
         require ROOT . "modules/profile/edit.php";
         break;
 
+    case 'profile-order':
+        require ROOT . "modules/profile/profile-order.php";
+        break;
 
     // ::::::::::::::::::: OTHERS :::::::::::::::::::
 

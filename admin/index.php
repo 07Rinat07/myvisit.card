@@ -89,6 +89,20 @@ switch ($uriModule) {
         require ROOT . "admin/modules/shop/delete.php";
         break;
 
+    // ::::::::::::::::::: ORDERS :::::::::::::::::::
+
+    case 'orders':
+        require ROOT . "admin/modules/orders/all.php";
+        break;
+
+    case 'order':
+        require ROOT . "admin/modules/orders/single.php";
+        break;
+
+    case 'order-delete':
+        require ROOT . "admin/modules/orders/delete.php";
+        break;
+
     // ::::::::::::::::::: OTHERS :::::::::::::::::::
 
     case 'contacts':

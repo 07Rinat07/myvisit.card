@@ -10,6 +10,7 @@
                 <?php include ROOT . 'admin/templates/sidebar/links/_blog.tpl'; ?>
                 <?php include ROOT . 'admin/templates/sidebar/links/_cats.tpl'; ?>
                 <?php include ROOT . 'admin/templates/sidebar/links/_shop.tpl'; ?>
+                <?php include ROOT . 'admin/templates/sidebar/links/_orders.tpl'; ?>
                 <?php include ROOT . 'admin/templates/sidebar/links/_contacts.tpl'; ?>
                 <?php include ROOT . 'admin/templates/sidebar/links/_messages.tpl'; ?>
                 <?php include ROOT . 'admin/templates/sidebar/links/_settings.tpl'; ?>

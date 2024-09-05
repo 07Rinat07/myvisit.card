@@ -128,6 +128,13 @@
 
 
         <?php
+
+            // Заказы
+            if (isset($orders) and !empty($orders)) {
+                include ROOT . "templates/profile/_parts/user-orders.tpl";
+            }
+
+            // Комментарии
             if (isset($comments) and !empty($comments)) {
                 include ROOT . "templates/profile/_parts/user-comments.tpl";
             }
