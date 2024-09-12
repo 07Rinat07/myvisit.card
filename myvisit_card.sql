@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 4.9.11
 -- https://www.phpmyadmin.net/
 --
--- Хост: 127.0.0.1:3306
--- Время создания: Авг 25 2024 г., 06:55
--- Версия сервера: 8.0.30
--- Версия PHP: 7.4.30
+-- Хост: localhost
+-- Время создания: Сен 12 2024 г., 16:08
+-- Версия сервера: 8.0.39-0ubuntu0.22.04.1
+-- Версия PHP: 7.4.33
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -77,22 +78,43 @@ INSERT INTO `comments` (`id`, `text`, `post`, `user`, `timestamp`) VALUES
 
 CREATE TABLE `messages` (
   `id` int UNSIGNED NOT NULL,
-  `name` varchar(191) COLLATE utf8mb4_unicode_520_ci DEFAULT NULL,
-  `email` varchar(191) COLLATE utf8mb4_unicode_520_ci DEFAULT NULL,
-  `message` varchar(191) COLLATE utf8mb4_unicode_520_ci DEFAULT NULL,
+  `name` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci DEFAULT NULL,
+  `email` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci DEFAULT NULL,
+  `message` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci DEFAULT NULL,
   `time` int UNSIGNED DEFAULT NULL,
-  `status` varchar(191) COLLATE utf8mb4_unicode_520_ci DEFAULT NULL,
+  `status` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci DEFAULT NULL,
   `file_name_src` tinyint UNSIGNED DEFAULT NULL,
   `file_name_original` tinyint UNSIGNED DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
 
+-- --------------------------------------------------------
+
 --
--- Дамп данных таблицы `messages`
+-- Структура таблицы `orders`
 --
 
-INSERT INTO `messages` (`id`, `name`, `email`, `message`, `time`, `status`, `file_name_src`, `file_name_original`) VALUES
-(1, 'Ruslan', 'test7@mail.ru', 'test', 1723607477, NULL, NULL, NULL),
-(2, 'Rinat S', 'testagain@mail.ru', 'simple test', 1723695073, NULL, NULL, NULL);
+CREATE TABLE `orders` (
+  `id` int UNSIGNED NOT NULL,
+  `name` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci DEFAULT NULL,
+  `secondname` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci DEFAULT NULL,
+  `email` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci DEFAULT NULL,
+  `phone` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci DEFAULT NULL,
+  `address` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci DEFAULT NULL,
+  `cart` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci DEFAULT NULL,
+  `user_id` int UNSIGNED DEFAULT NULL,
+  `timestamp` int UNSIGNED DEFAULT NULL,
+  `status` varchar(191) COLLATE utf8mb4_unicode_520_ci DEFAULT NULL,
+  `paid` tinyint UNSIGNED DEFAULT NULL,
+  `price` int UNSIGNED DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
+
+--
+-- Дамп данных таблицы `orders`
+--
+
+INSERT INTO `orders` (`id`, `name`, `secondname`, `email`, `phone`, `address`, `cart`, `user_id`, `timestamp`, `status`, `paid`, `price`) VALUES
+(1, 'Ruslan test name', 'Bob', 'testName@mail.ru', '44841547896', 'lalala street 777', '{\"4\":1}', 5, NULL, NULL, NULL, NULL),
+(2, 'Михаил ', 'Тарасов admin', 'user1@mail.ru', '', 'gdfbv', '{\"4\":1}', 5, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -163,7 +185,9 @@ INSERT INTO `products` (`id`, `title`, `price`, `content`, `timestamp`, `cover`,
 (6, 'iPhone XR', '42000', '<p>Описание товара</p>\r\n', 1618478235, '577756795485.jpg', '290-577756795485.jpg', NULL),
 (7, 'MacBook', '130000', '<p>Описание товара</p>\r\n', 1618478258, '517840615918.jpg', '290-517840615918.jpg', NULL),
 (8, 'Mac mini', '162000', '<p>Описание товара</p>\r\n', 1618478293, '925056621964.jpg', '290-925056621964.jpg', NULL),
-(9, 'Mac Pro', '312000', '<p>Описание товара.</p>\r\n', 1618478317, '683423481277.jpg', '290-683423481277.jpg', 1618478570);
+(9, 'Mac Pro', '312000', '<p>Описание товара.</p>\r\n', 1618478317, '683423481277.jpg', '290-683423481277.jpg', 1618478570),
+(10, 'Велотренажер', '30000', '<p>для теста</p>\r\n', 1725248382, '681975167268.jpg', '290-681975167268.jpg', NULL),
+(11, 'штанга', '70000', '<p>для занятий спортом тяжелой атлетикой</p>\r\n', 1726138614, '902436358791.jpg', '290-902436358791.jpg', 1726138737);
 
 -- --------------------------------------------------------
 
@@ -184,31 +208,31 @@ CREATE TABLE `settings` (
 
 INSERT INTO `settings` (`id`, `section`, `name`, `value`) VALUES
 (1, 'contacts', 'about_title', 'Обо мне'),
-(2, 'contacts', 'about_text', '<p>Занимаюсь разработкой современных сайтов и приложений. Мне нравится делать интересные и современные проекты. Этот сайт я сделал в рамках обучения в школе онлайн обучения WebCademy. Чуть позже я обновлю в нём свой контент. А пока посмотрите, как тут всё классно!</p>'),
+(2, 'contacts', 'about_text', '<p>Занимаюсь разработкой современных сайтов и приложений. Мне нравится делать интересные и современные проекты.</p>'),
 (3, 'contacts', 'services_title', 'НАПРАВЛЕНИЯ, КОТОРЫМИ Я ЗАНИМАЮСЬ'),
-(4, 'contacts', 'services_text', '<ul>\r\n	<li>Верстка сайтов</li>\r\n	<li>Frontend</li>\r\n	<li>UI/UX дизайн</li>\r\n</ul>'),
+(4, 'contacts', 'services_text', '<ul>\r\n	<li>Разработка и поддержка сайтов</li>\r\n	<li>Frontend</li>\r\n	<li>Backend</li>\r\n</ul>'),
 (5, 'contacts', 'contacts_title', 'Контакты'),
-(6, 'contacts', 'contacts_text', '<p><strong>Email:</strong>&nbsp;<a href=\"mailto:hi@digitalnomad.pro\">hi@digitalnomad.pro</a></p>\r\n\r\n<p><strong>Мобильный:</strong>&nbsp;<a href=\"tel:+79055557788\">+7 (905) 555-77-88</a></p>\r\n\r\n<p><strong>Адрес:</strong> Москва, Пресненская набережная, д. 6, стр. 2</p>'),
+(6, 'contacts', 'contacts_text', '<p><strong>Email:</strong>&nbsp; ura07srr<a href=\"mailto:hi@digitalnomad.pro\">@</a>gmail.com</p>\r\n\r\n<p><strong>Мобильный:</strong>&nbsp;<a href=\"tel:+79055557788\">+7 (705) 126-04-</a>10</p>\r\n\r\n<p><strong>Адрес:</strong>&nbsp;Уральск, микрорайон Женис, д. 7/1...</p>'),
 (1, 'contacts', 'about_title', 'Обо мне'),
-(2, 'contacts', 'about_text', '<p>Занимаюсь разработкой современных сайтов и приложений. Мне нравится делать интересные и современные проекты. </p>'),
+(2, 'contacts', 'about_text', '<p>Занимаюсь разработкой современных сайтов и приложений. Мне нравится делать интересные и современные проекты.</p>'),
 (3, 'contacts', 'services_title', 'НАПРАВЛЕНИЯ, КОТОРЫМИ Я ЗАНИМАЮСЬ'),
-(4, 'contacts', 'services_text', '<ul>\r\n	<li>Верстка сайтов</li>\r\n	<li>Frontend</li>\r\n	<li>UI/UX дизайн</li>\r\n</ul>'),
+(4, 'contacts', 'services_text', '<ul>\r\n	<li>Разработка и поддержка сайтов</li>\r\n	<li>Frontend</li>\r\n	<li>Backend</li>\r\n</ul>'),
 (5, 'contacts', 'contacts_title', 'Контакты'),
-(6, 'contacts', 'contacts_text', '<p><strong>Email:</strong>&nbsp;<a href=\"mailto:hi@digitalnomad.pro\">hi@digitalnomad.pro</a></p>\r\n\r\n<p><strong>Мобильный:</strong>&nbsp;<a href=\"tel:+79055557788\">+7 (905) 555-77-88</a></p>\r\n\r\n<p><strong>Адрес:</strong> Москва, Пресненская набережная, д. 6, стр. 2</p>'),
-(7, 'settings', 'site_title', 'Digital Freelancer'),
+(6, 'contacts', 'contacts_text', '<p><strong>Email:</strong>&nbsp; ura07srr<a href=\"mailto:hi@digitalnomad.pro\">@</a>gmail.com</p>\r\n\r\n<p><strong>Мобильный:</strong>&nbsp;<a href=\"tel:+79055557788\">+7 (705) 126-04-</a>10</p>\r\n\r\n<p><strong>Адрес:</strong>&nbsp;Уральск, микрорайон Женис, д. 7/1...</p>'),
+(7, 'settings', 'site_title', 'Digital NOMAD Freelancer'),
 (8, 'settings', 'site_slogan', 'CАЙТ IT СПЕЦИАЛИСТА'),
 (9, 'settings', 'copyright_name', '© Rinat developer'),
 (10, 'settings', 'copyright_year', 'Создано в 2024 году.'),
 (11, 'settings', 'status_on', 'on'),
 (12, 'settings', 'status_label', 'Свободен'),
 (13, 'settings', 'status_text', 'Рассматриваю предложения по разработке сайтов на PHP. Подробности'),
-(14, 'settings', 'status_link', 'http://project-prepare/contacts'),
+(14, 'settings', 'status_link', 'https://github.com/07Rinat07'),
 (15, 'settings', 'youtube', ''),
 (16, 'settings', 'instagram', 'instagram'),
 (17, 'settings', 'facebook', 'facebook'),
 (18, 'settings', 'vkontakte', '#'),
 (19, 'settings', 'linkedin', ''),
-(20, 'settings', 'github', 'github');
+(20, 'settings', 'github', 'https://github.com/07Rinat07');
 
 -- --------------------------------------------------------
 
@@ -227,16 +251,17 @@ CREATE TABLE `users` (
   `city` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci DEFAULT NULL,
   `country` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci DEFAULT NULL,
   `avatar` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci DEFAULT NULL,
-  `avatar_small` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci DEFAULT NULL
+  `avatar_small` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci DEFAULT NULL,
+  `cart` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
 
 --
 -- Дамп данных таблицы `users`
 --
 
-INSERT INTO `users` (`id`, `email`, `role`, `password`, `recovery_code`, `name`, `surname`, `city`, `country`, `avatar`, `avatar_small`) VALUES
-(4, 'mytest3004@mail.com', 'user', '$2y$10$bYcaKTa1wriOIc6/xd2cVeeCG98qZ7DvCthDSQoDvVn/.Pcw5/WOG', NULL, 'Bob', 'Pakerson', 'Texas', 'USA', '950558040700.jpg', '48-950558040700.jpg'),
-(5, 'user1@mail.ru', 'admin', '$2y$10$BJbubhX2SE4SjGL86qaIeObzZsacGW.dRM9oyB56zUmE2kgVn3Ppu', NULL, 'Михаил ', 'Тарасов admin', 'Рязань', 'Россия', '885036486953.jpg', '48-885036486953.jpg');
+INSERT INTO `users` (`id`, `email`, `role`, `password`, `recovery_code`, `name`, `surname`, `city`, `country`, `avatar`, `avatar_small`, `cart`) VALUES
+(4, 'mytest3004@mail.com', 'user', '$2y$10$bYcaKTa1wriOIc6/xd2cVeeCG98qZ7DvCthDSQoDvVn/.Pcw5/WOG', NULL, 'Bob', 'Pakerson', 'Texas', 'USA', '757442252814.png', '48-757442252814.png', ''),
+(5, 'user1@mail.ru', 'admin', '$2y$10$BJbubhX2SE4SjGL86qaIeObzZsacGW.dRM9oyB56zUmE2kgVn3Ppu', NULL, 'Михаил ', 'Тарасов admin', 'Рязань', 'Россия', '885036486953.jpg', '48-885036486953.jpg', '[]');
 
 --
 -- Индексы сохранённых таблиц
@@ -247,6 +272,13 @@ INSERT INTO `users` (`id`, `email`, `role`, `password`, `recovery_code`, `name`,
 --
 ALTER TABLE `messages`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Индексы таблицы `orders`
+--
+ALTER TABLE `orders`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `index_foreignkey_orders_user` (`user_id`);
 
 --
 -- Индексы таблицы `products`
@@ -268,19 +300,35 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT для таблицы `messages`
 --
 ALTER TABLE `messages`
-  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT для таблицы `orders`
+--
+ALTER TABLE `orders`
+  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT для таблицы `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT для таблицы `users`
 --
 ALTER TABLE `users`
   MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- Ограничения внешнего ключа сохраненных таблиц
+--
+
+--
+-- Ограничения внешнего ключа таблицы `orders`
+--
+ALTER TABLE `orders`
+  ADD CONSTRAINT `c_fk_orders_user_id` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE SET NULL ON UPDATE SET NULL;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
