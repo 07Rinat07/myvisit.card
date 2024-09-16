@@ -3,8 +3,8 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: localhost
--- Время создания: Сен 16 2024 г., 11:24
--- Версия сервера: 8.0.39-0ubuntu0.22.04.1
+-- Время создания: Сен 16 2024 г., 20:52
+-- Версия сервера: 8.0.39-0ubuntu0.24.04.2
 -- Версия PHP: 7.4.33
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -63,7 +63,8 @@ CREATE TABLE `comments` (
 --
 
 INSERT INTO `comments` (`id`, `text`, `post`, `user`, `timestamp`) VALUES
-(2, 'тест комент', 25, 4, 1726467801);
+(2, 'тест комент', 25, 4, 1726467801),
+(3, 'wow', 9, 4, 1726468523);
 
 -- --------------------------------------------------------
 
@@ -78,9 +79,17 @@ CREATE TABLE `messages` (
   `message` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci DEFAULT NULL,
   `time` int UNSIGNED DEFAULT NULL,
   `status` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci DEFAULT NULL,
-  `file_name_src` tinyint UNSIGNED DEFAULT NULL,
-  `file_name_original` tinyint UNSIGNED DEFAULT NULL
+  `file_name_src` varchar(255) COLLATE utf8mb4_unicode_520_ci DEFAULT NULL,
+  `file_name_original` varchar(255) COLLATE utf8mb4_unicode_520_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
+
+--
+-- Дамп данных таблицы `messages`
+--
+
+INSERT INTO `messages` (`id`, `name`, `email`, `message`, `time`, `status`, `file_name_src`, `file_name_original`) VALUES
+(1, 'user1', 'cutcode@mail.ru', 'рглгл', 1726501896, 'new', '582080703513.jpg', '905163369976.jpg'),
+(2, 'вмсв', 'мвм', 'мсмв', 1726501908, 'new', '450019768766.jpg', 'shtanga.jpg');
 
 -- --------------------------------------------------------
 
@@ -108,8 +117,7 @@ CREATE TABLE `orders` (
 --
 
 INSERT INTO `orders` (`id`, `name`, `secondname`, `email`, `phone`, `address`, `cart`, `user_id`, `timestamp`, `status`, `paid`, `price`) VALUES
-(5, 'Bob', 'Pakerson', 'mytest3004@mail.com', '87051260410', '', '[{\"id\":11,\"amount\":1,\"title\":\"\\u0448\\u0442\\u0430\\u043d\\u0433\\u0430\",\"price\":\"70000\"}]', 4, 1726464753, 'new', 0, 70000),
-(6, 'Bob', 'Pakerson', 'mytest3004@mail.com', '889888984848884', 'онеоего', '[{\"id\":10,\"amount\":1,\"title\":\"\\u0412\\u0435\\u043b\\u043e\\u0442\\u0440\\u0435\\u043d\\u0430\\u0436\\u0435\\u0440\",\"price\":\"30000\"}]', 4, 1726467216, 'new', 0, 30000);
+(7, 'Bob', 'Pakerson', 'mytest3004@mail.com', '889888984848884', '', '[{\"id\":11,\"amount\":2,\"title\":\"\\u0448\\u0442\\u0430\\u043d\\u0433\\u0430\",\"price\":\"70000\"}]', 4, 1726468496, 'new', 0, 140000);
 
 -- --------------------------------------------------------
 
@@ -301,19 +309,19 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT для таблицы `comments`
 --
 ALTER TABLE `comments`
-  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT для таблицы `messages`
 --
 ALTER TABLE `messages`
-  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT для таблицы `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT для таблицы `products`

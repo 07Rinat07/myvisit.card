@@ -79,7 +79,7 @@
 
 						<label>
 							<p class="order-form__name">Телефон</p>
-								<input class="input-text" type="text" placeholder="Введите фамилию" id="form-title" name="phone" />
+								<input class="input-text" type="text" placeholder="Введите номер телефона" id="form-title" name="phone" />
 						</label>
 					</div>
 
