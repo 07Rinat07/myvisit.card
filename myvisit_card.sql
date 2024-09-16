@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: localhost
--- Время создания: Сен 12 2024 г., 16:08
+-- Время создания: Сен 16 2024 г., 11:24
 -- Версия сервера: 8.0.39-0ubuntu0.22.04.1
 -- Версия PHP: 7.4.33
 
@@ -52,23 +52,18 @@ INSERT INTO `categories` (`id`, `title`) VALUES
 
 CREATE TABLE `comments` (
   `id` int UNSIGNED NOT NULL,
-  `text` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `post` int UNSIGNED DEFAULT NULL,
-  `user` int UNSIGNED DEFAULT NULL,
-  `timestamp` int UNSIGNED DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  `text` text NOT NULL,
+  `post` int NOT NULL,
+  `user` int NOT NULL,
+  `timestamp` int NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Дамп данных таблицы `comments`
 --
 
 INSERT INTO `comments` (`id`, `text`, `post`, `user`, `timestamp`) VALUES
-(1, 'Cool!', 24, 14, 1602777634),
-(2, 'Второй комментарий к посту.', 24, 14, 1602778150),
-(3, 'Мой третий комментарий.', 20, 14, 1602778211),
-(4, 'Коммент от меня!', 20, 18, 1602778245),
-(5, 'Комментарий от анонима.', 20, 19, 1602778286),
-(6, 'More comments.', 20, 19, 1602778998);
+(2, 'тест комент', 25, 4, 1726467801);
 
 -- --------------------------------------------------------
 
@@ -113,8 +108,8 @@ CREATE TABLE `orders` (
 --
 
 INSERT INTO `orders` (`id`, `name`, `secondname`, `email`, `phone`, `address`, `cart`, `user_id`, `timestamp`, `status`, `paid`, `price`) VALUES
-(1, 'Ruslan test name', 'Bob', 'testName@mail.ru', '44841547896', 'lalala street 777', '{\"4\":1}', 5, NULL, NULL, NULL, NULL),
-(2, 'Михаил ', 'Тарасов admin', 'user1@mail.ru', '', 'gdfbv', '{\"4\":1}', 5, NULL, NULL, NULL, NULL);
+(5, 'Bob', 'Pakerson', 'mytest3004@mail.com', '87051260410', '', '[{\"id\":11,\"amount\":1,\"title\":\"\\u0448\\u0442\\u0430\\u043d\\u0433\\u0430\",\"price\":\"70000\"}]', 4, 1726464753, 'new', 0, 70000),
+(6, 'Bob', 'Pakerson', 'mytest3004@mail.com', '889888984848884', 'онеоего', '[{\"id\":10,\"amount\":1,\"title\":\"\\u0412\\u0435\\u043b\\u043e\\u0442\\u0440\\u0435\\u043d\\u0430\\u0436\\u0435\\u0440\",\"price\":\"30000\"}]', 4, 1726467216, 'new', 0, 30000);
 
 -- --------------------------------------------------------
 
@@ -268,6 +263,12 @@ INSERT INTO `users` (`id`, `email`, `role`, `password`, `recovery_code`, `name`,
 --
 
 --
+-- Индексы таблицы `comments`
+--
+ALTER TABLE `comments`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Индексы таблицы `messages`
 --
 ALTER TABLE `messages`
@@ -297,6 +298,12 @@ ALTER TABLE `users`
 --
 
 --
+-- AUTO_INCREMENT для таблицы `comments`
+--
+ALTER TABLE `comments`
+  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT для таблицы `messages`
 --
 ALTER TABLE `messages`
@@ -306,7 +313,7 @@ ALTER TABLE `messages`
 -- AUTO_INCREMENT для таблицы `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT для таблицы `products`
