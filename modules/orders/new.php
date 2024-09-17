@@ -39,7 +39,7 @@ if (isset($_POST['submit'])) {
     $order->price = $total_price;
     $order->cart = $order_cart;
 
-    R::store($order);
+    $id = R::store($order);
 
     // Очищаем корзину
     if (isLoggedIn()) {
@@ -50,7 +50,7 @@ if (isset($_POST['submit'])) {
         setcookie('cart', '', time() - 3600);
     }
 
-    header("Location: " . HOST . 'ordercreated');
+    header("Location: " . HOST . 'ordercreated?id=' . $id);
     exit();
 }
 
