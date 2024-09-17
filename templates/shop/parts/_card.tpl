@@ -4,7 +4,7 @@
     </div>
     <div class="card-product__title"><?= $product['title'] ?></div>
     <div class="card-product-row">
-        <div class="card-product__price"> <span><?= $product['price'] ?> руб.</span></div>
+        <div class="card-product__price"> <span><?= format_price($product['price'])  ?> руб.</span></div>
         <div class="card-product__button">
             <div class="watch-button">Смотреть</div>
         </div>

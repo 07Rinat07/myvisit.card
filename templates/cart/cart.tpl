@@ -26,7 +26,7 @@
                         <div class="page-shopping-cart__id">
                             <?= $cart[$product['id']] ?>
                         </div>
-                        <div class="page-shopping-cart__money"><?= $product['price']; ?> руб.</div>
+                        <div class="page-shopping-cart__money"><?= format_price($product['price']) ?> руб.</div>
                         <div class="page-shopping-cart__delete">
                             <a href="<?= HOST; ?>removefromcart?id=<?= $product['id']; ?>"> <span class="leftright"></span><span class="rightleft"> </span></a>
                         </div>
@@ -35,7 +35,7 @@
 
                 <div class="page-shopping-cart__row-down">
                     <div class="page-shopping-cart__id"><?= $cartCount; ?> единицы</div>
-                    <div class="page-shopping-cart__money"><?= $cartTotalPrice; ?> руб.</div>
+                    <div class="page-shopping-cart__money"><?= format_price($cartTotalPrice); ?> руб.</div>
                 </div>
                 <a class="page-shopping-cart__button" href="<?=HOST?>neworder">
                     Перейти к оформлению заказа

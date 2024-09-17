@@ -30,7 +30,7 @@
 								?>
 							</td>
 							<td><?=$cartCount;?> шт.</td>
-							<td><?=$cartTotalPrice;?> руб.</td>
+							<td><?=format_price($cartTotalPrice);?> руб.</td>
 						</tr>
 					</tbody>
 				</table>
@@ -79,7 +79,7 @@
 
 						<label>
 							<p class="order-form__name">Телефон</p>
-								<input class="input-text" type="text" placeholder="Введите номер телефона" id="form-title" name="phone" />
+								<input class="input-text" type="text" placeholder="Введите фамилию" id="form-title" name="phone" />
 						</label>
 					</div>
 

@@ -1,9 +1,9 @@
 <?php if (isset($_SESSION['logged_user']) && !empty($_SESSION['logged_user'])) : ?>
 
-    <!-- Оставить комментарий -->
+    <!-- Оставить коммментарий -->
     <section class="page-post__post-comments">
         <div class="page-post__title">
-            <h2 class="heading">Оставить комментарий</h2>
+            <h2 class="heading">Оставить комментарий </h2>
         </div>
         <div class="page-post__comments-post-comment">
             <div class="post-comment">
@@ -11,13 +11,13 @@
                     <div class="avatar-small">
                         <?php if (!empty($_SESSION['logged_user']['avatar_small'])): ?>
                             <img src="<?= HOST ?>usercontent/avatars/<?= $_SESSION['logged_user']['avatar_small'] ?>" alt="Аватарка" />
-                        <?php else: ?>
+                        <? else: ?>
                             <img src="<?= HOST ?>usercontent/avatars/no-avatar.svg" alt="Аватарка" />
-                        <?php endif; ?>
+                        <? endif; ?>
                     </div>
                 </div>
-                <form action="<?= HOST ?>add-comment" method="POST" class="post-comment__form">
-                    <input type="hidden" name="id" value="<?= $post['id'] ?>">
+                <form action="<?=HOST?>add-comment" method="POST" class="post-comment__form">
+                    <input type="hidden" name="id" value="<?=$post['id']?>">
                     <div class="post-comment__form-textarea">
                         <textarea name="comment" class="textarea" placeholder="Введите ваш комментарий..."></textarea>
                     </div>
@@ -28,6 +28,6 @@
             </div>
         </div>
     </section>
-    <!-- // Оставить комментарий -->
+    <!-- // Оставить коммментарий -->
 
 <?php endif; ?>

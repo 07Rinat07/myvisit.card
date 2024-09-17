@@ -16,7 +16,7 @@
 					<div class="page-product__title">
 						<h2 class="section-title"><?= $product->title; ?></h2>
 					</div>
-					<div class="page-product__price"><?= $product->price; ?> руб.</div>
+					<div class="page-product__price"><?= format_price($product['price']); ?> руб.</div>
 					<a class="page-product__button primary-button" href="<?= HOST ?>addtocart?id=<?= $product->id; ?>">
 						В корзину
 					</a>

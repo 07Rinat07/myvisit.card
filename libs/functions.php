@@ -467,3 +467,7 @@ function isLoggedIn(){
 
     return $result;
 }
+
+function format_price ($price) {
+    return number_format($price, 0, ',', ' ');
+}

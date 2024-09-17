@@ -15,4 +15,4 @@
         href="?page=<?= $page?>"
     ><?= $page?></a>
 </div>
-<?php endfor; ?>
+<?endfor;?>
