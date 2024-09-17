@@ -125,6 +125,10 @@ switch ($uriModule) {
         require ROOT . "modules/orders/created.php";
         break;
 
+    case 'orderselectpayment':
+        require ROOT . "modules/orders/selectpayment.php";
+        break;
+
     // ::::::::::::::::::: OTHER :::::::::::::::::::
 
     case 'contacts':
