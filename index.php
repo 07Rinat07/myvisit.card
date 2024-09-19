@@ -1,5 +1,7 @@
 <?php
 
+require __DIR__ . '/vendor/autoload.php';
+
 require_once "config.php";
 require_once "db.php";
 require_once ROOT . "./libs/resize-and-crop.php";
@@ -127,6 +129,12 @@ switch ($uriModule) {
 
     case 'orderselectpayment':
         require ROOT . "modules/orders/selectpayment.php";
+        break;
+
+    // ::::::::::::::::::: PAYMENTS :::::::::::::::::::
+
+    case 'paymentyookassa':
+        require ROOT . "modules/payments/yookassa.php";
         break;
 
     // ::::::::::::::::::: OTHER :::::::::::::::::::

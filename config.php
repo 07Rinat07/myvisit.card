@@ -7,6 +7,12 @@ define('DB_USER', 'dev');
 define('DB_PASS', 'newpassword');
 
 
+// YOOKASSA SETTINGS
+define('SHOP_ID', '232314');
+define('SECRET_KEY', 'test_NvYVqsG_bETsqB2gzw0No7i_Bl9sw8GZjHIRjB-SZmU');
+
+
+
 if (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on') {
     $protocol = "https://";
 } else {
