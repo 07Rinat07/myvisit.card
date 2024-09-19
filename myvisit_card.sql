@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: localhost
--- Время создания: Сен 16 2024 г., 20:52
+-- Время создания: Сен 19 2024 г., 10:00
 -- Версия сервера: 8.0.39-0ubuntu0.24.04.2
 -- Версия PHP: 7.4.33
 
@@ -64,7 +64,8 @@ CREATE TABLE `comments` (
 
 INSERT INTO `comments` (`id`, `text`, `post`, `user`, `timestamp`) VALUES
 (2, 'тест комент', 25, 4, 1726467801),
-(3, 'wow', 9, 4, 1726468523);
+(3, 'wow', 9, 4, 1726468523),
+(4, 'ллалаллаа', 20, 5, 1726502912);
 
 -- --------------------------------------------------------
 
@@ -88,8 +89,8 @@ CREATE TABLE `messages` (
 --
 
 INSERT INTO `messages` (`id`, `name`, `email`, `message`, `time`, `status`, `file_name_src`, `file_name_original`) VALUES
-(1, 'user1', 'cutcode@mail.ru', 'рглгл', 1726501896, 'new', '582080703513.jpg', '905163369976.jpg'),
-(2, 'вмсв', 'мвм', 'мсмв', 1726501908, 'new', '450019768766.jpg', 'shtanga.jpg');
+(6, 'Tima', 'laravel@laravel.com', 'test coment', 1726503516, NULL, '173783826276.jpg', '905163369976.jpg'),
+(7, 'test777', 'user7771@mail.ru', '75о5орор5', 1726678307, NULL, '380153000619.jpg', 'shtanga.jpg');
 
 -- --------------------------------------------------------
 
@@ -117,7 +118,10 @@ CREATE TABLE `orders` (
 --
 
 INSERT INTO `orders` (`id`, `name`, `secondname`, `email`, `phone`, `address`, `cart`, `user_id`, `timestamp`, `status`, `paid`, `price`) VALUES
-(7, 'Bob', 'Pakerson', 'mytest3004@mail.com', '889888984848884', '', '[{\"id\":11,\"amount\":2,\"title\":\"\\u0448\\u0442\\u0430\\u043d\\u0433\\u0430\",\"price\":\"70000\"}]', 4, 1726468496, 'new', 0, 140000);
+(7, 'Bob', 'Pakerson', 'mytest3004@mail.com', '889888984848884', '', '[{\"id\":11,\"amount\":2,\"title\":\"\\u0448\\u0442\\u0430\\u043d\\u0433\\u0430\",\"price\":\"70000\"}]', 4, 1726468496, 'new', 0, 140000),
+(8, 'test', 'Saruldin', 'cutcode@mail.ru', '87051260410', ';;;;;;;;]\'o;o[o;jlo;o;p\'', '[{\"id\":11,\"amount\":1,\"title\":\"\\u0448\\u0442\\u0430\\u043d\\u0433\\u0430\",\"price\":\"70000\"}]', NULL, 1726561573, 'new', 0, 70000),
+(9, 'Михаил ', 'Тарасов admin', 'user1@mail.ru', '87051260410', '', '[{\"id\":10,\"amount\":1,\"title\":\"\\u0412\\u0435\\u043b\\u043e\\u0442\\u0440\\u0435\\u043d\\u0430\\u0436\\u0435\\u0440\",\"price\":\"30000\"}]', 5, 1726562296, 'new', 0, 30000),
+(10, 'Вова', 'Мишустин', 'vovamishustin@mail.ru', '889888984848884', 'Москва Театральная 24/1, вк 28', '[{\"id\":7,\"amount\":1,\"title\":\"MacBook\",\"price\":\"130000\"}]', NULL, 1726677781, 'new', 0, 130000);
 
 -- --------------------------------------------------------
 
@@ -222,8 +226,8 @@ INSERT INTO `settings` (`id`, `section`, `name`, `value`) VALUES
 (4, 'contacts', 'services_text', '<ul>\r\n	<li>Разработка и поддержка сайтов</li>\r\n	<li>Frontend</li>\r\n	<li>Backend</li>\r\n</ul>'),
 (5, 'contacts', 'contacts_title', 'Контакты'),
 (6, 'contacts', 'contacts_text', '<p><strong>Email:</strong>&nbsp; ura07srr<a href=\"mailto:hi@digitalnomad.pro\">@</a>gmail.com</p>\r\n\r\n<p><strong>Мобильный:</strong>&nbsp;<a href=\"tel:+79055557788\">+7 (705) 126-04-</a>10</p>\r\n\r\n<p><strong>Адрес:</strong>&nbsp;Уральск, микрорайон Женис, д. 7/1...</p>'),
-(7, 'settings', 'site_title', 'Digital NOMAD Freelancer'),
-(8, 'settings', 'site_slogan', 'CАЙТ IT СПЕЦИАЛИСТА'),
+(7, 'settings', 'site_title', 'Digital NOMAD'),
+(8, 'settings', 'site_slogan', 'RINAT DEVELOPER'),
 (9, 'settings', 'copyright_name', '© Rinat developer'),
 (10, 'settings', 'copyright_year', 'Создано в 2024 году.'),
 (11, 'settings', 'status_on', 'on'),
@@ -309,19 +313,19 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT для таблицы `comments`
 --
 ALTER TABLE `comments`
-  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT для таблицы `messages`
 --
 ALTER TABLE `messages`
-  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT для таблицы `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT для таблицы `products`
