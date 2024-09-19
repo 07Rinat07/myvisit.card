@@ -10,5 +10,6 @@
     }
   ],
   "require": {
+    "yoomoney/yookassa-sdk-php": "^2.11"
   }
 }
