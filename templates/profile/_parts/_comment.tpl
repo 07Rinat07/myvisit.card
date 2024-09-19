@@ -4,9 +4,9 @@
         <div class="avatar-small">
             <?php if (!empty($user['avatar_small'])): ?>
                 <img src="<?= HOST ?>usercontent/avatars/<?= $user['avatar_small'] ?>" alt="Аватарка" />
-            <? else: ?>
+            <?php else: ?>
                 <img src="<?= HOST ?>usercontent/avatars/no-avatar.svg" alt="Аватарка" />
-            <? endif; ?>
+            <?php endif; ?>
         </div>
     </div>
     <div class="comment__data">
