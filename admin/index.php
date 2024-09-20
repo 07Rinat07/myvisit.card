@@ -1,4 +1,5 @@
 <?php
+error_reporting(E_ALL & ~E_DEPRECATED); // отключил показ ошибок несовместимости библиотеки с версиями PHP 8 и новее.
 
 require_once "./../config.php";
 require_once "./../db.php";

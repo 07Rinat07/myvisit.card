@@ -3,7 +3,7 @@
 //DB Settings
 define('DB_HOST', 'localhost');
 define('DB_NAME', 'myvisit.card');
-define('DB_USER', 'dev');
+define('DB_USER', 'root');
 define('DB_PASS', 'newpassword');
 
 
