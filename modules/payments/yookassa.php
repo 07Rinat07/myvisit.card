@@ -6,12 +6,28 @@ $client = new Client();
 $client->setAuth(SHOP_ID, SECRET_KEY);
 
 try {
-    $response = $client->me();
+    $payment = $client->createPayment(
+        array(
+            'amount' => array(
+                'value' => 350.0,
+                'currency' => 'RUB',
+            ),
+            'confirmation' => array(
+                'type' => 'redirect',
+                'return_url' => HOST . 'shop',
+            ),
+            'capture' => true,
+            'description' => 'Заказ №3',
+        ),
+        uniqid('', true)
+    );
+
+    $confirmationUrl = $payment->getConfirmation()->getConfirmationUrl();
+
 } catch (\Exception $e) {
     $response = $e;
 }
 
-var_dump($response);
-
-// Подключение к YooKassa через SDK. Получение информации о магазине
-
+// Редирект пользователя на форму оплаты
+header('Location: ' . $confirmationUrl);
+exit();
