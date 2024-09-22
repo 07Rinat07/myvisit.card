@@ -29,6 +29,15 @@ try {
     $response = $e;
 }
 
+// Создаем информацию о попытке платежа в БД
+$paymentDB = R::dispense('payments');
+$paymentDB->payment = $payment['id'];
+$paymentDB->order_id = $_SESSION['order']['id'];
+$paymentDB->price = $_SESSION['order']['price'];
+$paymentDB->status = 'pending';
+$paymentDB->timestamp = time();
+$_SESSION['payment']['id'] = R::store($paymentDB);
+
 // Редирект пользователя на форму оплаты
 header('Location: ' . $confirmationUrl);
 exit();

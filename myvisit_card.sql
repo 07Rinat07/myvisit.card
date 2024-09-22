@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.11
+-- version 5.2.1deb3
 -- https://www.phpmyadmin.net/
 --
--- Хост: localhost
--- Время создания: Сен 19 2024 г., 10:00
+-- Хост: localhost:3306
+-- Время создания: Сен 22 2024 г., 13:06
 -- Версия сервера: 8.0.39-0ubuntu0.24.04.2
--- Версия PHP: 7.4.33
+-- Версия PHP: 8.3.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -80,8 +79,8 @@ CREATE TABLE `messages` (
   `message` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci DEFAULT NULL,
   `time` int UNSIGNED DEFAULT NULL,
   `status` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci DEFAULT NULL,
-  `file_name_src` varchar(255) COLLATE utf8mb4_unicode_520_ci DEFAULT NULL,
-  `file_name_original` varchar(255) COLLATE utf8mb4_unicode_520_ci DEFAULT NULL
+  `file_name_src` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci DEFAULT NULL,
+  `file_name_original` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
 
 --
@@ -108,7 +107,7 @@ CREATE TABLE `orders` (
   `cart` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci DEFAULT NULL,
   `user_id` int UNSIGNED DEFAULT NULL,
   `timestamp` int UNSIGNED DEFAULT NULL,
-  `status` varchar(191) COLLATE utf8mb4_unicode_520_ci DEFAULT NULL,
+  `status` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci DEFAULT NULL,
   `paid` tinyint UNSIGNED DEFAULT NULL,
   `price` int UNSIGNED DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
@@ -121,7 +120,31 @@ INSERT INTO `orders` (`id`, `name`, `secondname`, `email`, `phone`, `address`, `
 (7, 'Bob', 'Pakerson', 'mytest3004@mail.com', '889888984848884', '', '[{\"id\":11,\"amount\":2,\"title\":\"\\u0448\\u0442\\u0430\\u043d\\u0433\\u0430\",\"price\":\"70000\"}]', 4, 1726468496, 'new', 0, 140000),
 (8, 'test', 'Saruldin', 'cutcode@mail.ru', '87051260410', ';;;;;;;;]\'o;o[o;jlo;o;p\'', '[{\"id\":11,\"amount\":1,\"title\":\"\\u0448\\u0442\\u0430\\u043d\\u0433\\u0430\",\"price\":\"70000\"}]', NULL, 1726561573, 'new', 0, 70000),
 (9, 'Михаил ', 'Тарасов admin', 'user1@mail.ru', '87051260410', '', '[{\"id\":10,\"amount\":1,\"title\":\"\\u0412\\u0435\\u043b\\u043e\\u0442\\u0440\\u0435\\u043d\\u0430\\u0436\\u0435\\u0440\",\"price\":\"30000\"}]', 5, 1726562296, 'new', 0, 30000),
-(10, 'Вова', 'Мишустин', 'vovamishustin@mail.ru', '889888984848884', 'Москва Театральная 24/1, вк 28', '[{\"id\":7,\"amount\":1,\"title\":\"MacBook\",\"price\":\"130000\"}]', NULL, 1726677781, 'new', 0, 130000);
+(10, 'Вова', 'Мишустин', 'vovamishustin@mail.ru', '889888984848884', 'Москва Театральная 24/1, вк 28', '[{\"id\":7,\"amount\":1,\"title\":\"MacBook\",\"price\":\"130000\"}]', NULL, 1726677781, 'new', 0, 130000),
+(11, 'Bob', 'Pakerson', 'mytest3004@mail.com', '889888984848884', 'vsdvs', '[{\"id\":6,\"amount\":1,\"title\":\"iPhone XR\",\"price\":\"42000\"}]', 4, 1726934385, 'new', 0, 42000),
+(12, 'Bob', 'Pakerson', 'mytest3004@mail.com', '89898884688448946', '', '[{\"id\":10,\"amount\":1,\"title\":\"\\u0412\\u0435\\u043b\\u043e\\u0442\\u0440\\u0435\\u043d\\u0430\\u0436\\u0435\\u0440\",\"price\":\"30000\"}]', 4, 1727010292, 'new', 0, 30000);
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `payments`
+--
+
+CREATE TABLE `payments` (
+  `id` int UNSIGNED NOT NULL,
+  `payment` varchar(191) COLLATE utf8mb4_unicode_520_ci DEFAULT NULL,
+  `order_id` int UNSIGNED DEFAULT NULL,
+  `price` int UNSIGNED DEFAULT NULL,
+  `status` varchar(191) COLLATE utf8mb4_unicode_520_ci DEFAULT NULL,
+  `timestamp` int UNSIGNED DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
+
+--
+-- Дамп данных таблицы `payments`
+--
+
+INSERT INTO `payments` (`id`, `payment`, `order_id`, `price`, `status`, `timestamp`) VALUES
+(1, '2e8229c5-000f-5000-8000-1a2642572efd', 12, 30000, 'pending', 1727010309);
 
 -- --------------------------------------------------------
 
@@ -294,6 +317,13 @@ ALTER TABLE `orders`
   ADD KEY `index_foreignkey_orders_user` (`user_id`);
 
 --
+-- Индексы таблицы `payments`
+--
+ALTER TABLE `payments`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `index_foreignkey_payments_order` (`order_id`);
+
+--
 -- Индексы таблицы `products`
 --
 ALTER TABLE `products`
@@ -325,7 +355,13 @@ ALTER TABLE `messages`
 -- AUTO_INCREMENT для таблицы `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+
+--
+-- AUTO_INCREMENT для таблицы `payments`
+--
+ALTER TABLE `payments`
+  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT для таблицы `products`
