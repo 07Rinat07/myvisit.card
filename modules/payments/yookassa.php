@@ -9,7 +9,7 @@ try {
     $payment = $client->createPayment(
         array(
             'amount' => array(
-                'value' => 350.0,
+                'value' => $_SESSION['order']['price'],
                 'currency' => 'RUB',
             ),
             'confirmation' => array(
@@ -17,11 +17,12 @@ try {
                 'return_url' => HOST . 'shop',
             ),
             'capture' => true,
-            'description' => 'Заказ №3',
+            'description' => 'Заказ №' . $_SESSION['order']['id'],
         ),
         uniqid('', true)
     );
 
+    // получаем confirmationUrl для дальнейшего редиректа
     $confirmationUrl = $payment->getConfirmation()->getConfirmationUrl();
 
 } catch (\Exception $e) {
