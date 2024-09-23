@@ -14,7 +14,7 @@ try {
             ),
             'confirmation' => array(
                 'type' => 'redirect',
-                'return_url' => HOST . 'shop',
+                'return_url' => HOST . 'paymentyookassareturn',
             ),
             'capture' => true,
             'description' => 'Заказ №' . $_SESSION['order']['id'],

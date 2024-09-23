@@ -1,6 +1,7 @@
 <?php
 error_reporting(E_ALL & ~E_DEPRECATED);   // отключил показ ошибок несовместимости библиотеки с версиями PHP 8 и новее.
 
+
 require __DIR__ . '/vendor/autoload.php';
 
 require_once "config.php";
@@ -136,6 +137,10 @@ switch ($uriModule) {
 
     case 'paymentyookassa':
         require ROOT . "modules/payments/yookassa.php";
+        break;
+
+    case 'paymentyookassareturn':
+        require ROOT . "modules/payments/yookassareturn.php";
         break;
 
     // ::::::::::::::::::: OTHER :::::::::::::::::::
