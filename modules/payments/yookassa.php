@@ -36,7 +36,7 @@ $paymentDB->order_id = $_SESSION['order']['id'];
 $paymentDB->price = $_SESSION['order']['price'];
 $paymentDB->status = 'pending';
 $paymentDB->timestamp = time();
-R::store($paymentDB);
+$_SESSION['payment']['id'] = R::store($paymentDB);
 
 // Сохраняем yookassa id платежа в сессии
 $_SESSION['payment']['yookassaid'] = $payment['id'];
