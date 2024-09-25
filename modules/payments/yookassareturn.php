@@ -2,17 +2,14 @@
 
 $pageTitle = "Результат оплаты заказа";
 
-// YooKassa ID платежа
-$paymentId = $_SESSION['payment']['yookassaid'];
-
-// Получем статус платежа из Юкассы
+// Получаем статус платежа из Юкассы
 use YooKassa\Client;
 
 $client = new Client();
 $client->setAuth(SHOP_ID, SECRET_KEY);
 
 try {
-    $payment = $client->getPaymentInfo($paymentId);
+    $payment = $client->getPaymentInfo($_SESSION['payment']['yookassaid']);
 } catch (\Exception $e) {
     $response = $e;
 }
@@ -48,6 +45,11 @@ switch($payment['status']) {
 
 R::store($order);
 
+// Обновление страницы в ожидании платежа
+if ($payment['status'] === 'pending' || $payment['status'] === 'waiting_for_capture') {
+    header("Refresh: 5");
+}
+
 // Шаблоны
 include ROOT . 'templates/_page-parts/_head.tpl';
 include ROOT . 'templates/_parts/_header.tpl';
@@ -61,5 +63,5 @@ include ROOT . 'templates/_page-parts/_foot.tpl';
 + Получить статус платежа из Юкассы
 + Запись статуса оплаты в БД
 + Обновить информацию в заказе: оплачен/не оплачен
-- Шаблоны для статуса оплаты на странице возврата
++ Шаблоны для статуса оплаты на странице возврата
 */
