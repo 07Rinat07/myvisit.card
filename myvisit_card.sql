@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: localhost:3306
--- Время создания: Сен 24 2024 г., 18:10
+-- Время создания: Сен 26 2024 г., 12:57
 -- Версия сервера: 8.0.39-0ubuntu0.24.04.2
 -- Версия PHP: 8.3.11
 
@@ -63,9 +63,7 @@ CREATE TABLE `comments` (
 --
 
 INSERT INTO `comments` (`id`, `text`, `post`, `user`, `timestamp`) VALUES
-(2, 'тест комент', 25, 4, 1726467801),
-(3, 'wow', 9, 4, 1726468523),
-(4, 'ллалаллаа', 20, 5, 1726502912);
+(5, 'Алматы красивый город с прекрасным пейзажем....', 28, 5, 1727288848);
 
 -- --------------------------------------------------------
 
@@ -369,7 +367,7 @@ ALTER TABLE `categories`
 -- AUTO_INCREMENT для таблицы `comments`
 --
 ALTER TABLE `comments`
-  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT для таблицы `messages`
