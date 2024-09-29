@@ -11,7 +11,7 @@
         <div class="order-registration">
 
             <div class="order-registration__title">
-                <h1 class="heading">Результат оплаты заказа №__</h1>
+                <h1 class="heading">Результат оплаты заказа №<?= $paymentDB['order_id']?></h1>
             </div>
 
             <div class="loader-wrapper">
