@@ -1,10 +1,10 @@
 <?php
 
 //DB Settings
-define('DB_HOST', 'localhost');
-define('DB_NAME', 'myvisit.card');
+define('DB_HOST', 'Mysql-8.0');
+define('DB_NAME', 'myvisit_card');
 define('DB_USER', 'root');
-define('DB_PASS', 'newpassword');
+define('DB_PASS', '');
 
 
 // YOOKASSA SETTINGS
